@@ -284,8 +284,9 @@ class State <: Object {
     return;
   }
 
-  unit update(int k) {
+  bool update(int k) {
      bool collided = false;
+     bool returnVal = false;
     int[][] original_points = {{0,0},{0,0},{0,0},{0,0}};
     for(int i = 0; i < 4; i = i + 1;)
 	    {
@@ -322,15 +323,7 @@ class State <: Object {
 	int old_shapey = original_points[i][1];
       	this.grid[old_shapex][old_shapey] = 1;
      }
-    }
-    else{
-      for(int i = 0; i<4; i=i+1;){
-	int shapex = this.shape.points[i][0];
-	int shapey = this.shape.points[i][1];
-	this.grid[shapex][shapey] = 1;
-     }
-     }
-    for(int j = 0; j< 50;j=j+1;){
+   for(int j = 0; j< 50;j=j+1;){
       bool complete = true;
       for(int i = 0; i<10; i=i+1;){
 	if(this.grid[i][j]==0)
@@ -347,8 +340,24 @@ class State <: Object {
 	    this.grid[l][0] =0;
 	  }
       }
+     }
+   /*Check if game over*/
+   	for(int l = 0; l<10;l=l+1;){
+	  if(this.grid[l][0] != 0)
+	    returnVal = true;
+	  }
     }
-     return;
+
+    /*Didn't collide*/
+    else{
+      for(int i = 0; i<4; i=i+1;){
+	int shapex = this.shape.points[i][0];
+	int shapey = this.shape.points[i][1];
+	this.grid[shapex][shapey] = 1;
+     }
+     }
+
+     return returnVal;
   }
   unit display() {
     int color = 0;
@@ -406,7 +415,7 @@ int program(int argc, string[] argv) {
     while ((k != 27) & (!lost)) {
       state.display();
       k = con_getch();
-      state.update(k);
+     lost = state.update(k);
     }
     con_cleanup();
   } else {
