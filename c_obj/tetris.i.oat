@@ -1,6 +1,142 @@
-#include "console.oat"
-#include "list.oat"
-#include "math.oat"
+# 1 "tetris.oat"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "tetris.oat"
+
+# 1 "lib/console.oat" 1
+
+
+
+
+
+unit con_init() extern
+
+
+unit con_cleanup() extern
+
+
+unit con_print(string str) extern
+
+
+unit con_printch(int ch) extern
+
+
+unit con_move(int x, int y) extern
+
+
+unit con_attrset(int attr) extern
+
+
+int con_attrget() extern
+
+
+unit con_clrtoeol() extern
+
+
+unit con_clear() extern
+
+
+unit con_refresh() extern
+
+
+int con_getch() extern
+
+
+int con_color(int c) extern
+
+
+int con_bold(int c) extern
+
+
+int con_width() extern
+
+
+int con_height() extern
+
+
+int con_sleep(int amt) extern
+
+int con_halfdelay(int x) extern
+
+# 2 "tetris.oat" 2
+
+# 1 "lib/list.oat" 1
+
+
+
+
+
+bool equals(Object? o1, Object? o2) {
+  return o1 == o2;
+}
+
+class ListItem <: Object {
+  Object? obj;
+  ListItem? prev;
+  ListItem? next;
+
+  new (Object? o)() {
+    this.obj = o;
+    this.prev = null;
+    this.next = null;
+  }
+};
+
+class List <: Object {
+  ListItem? head;
+
+  new ()() {
+    this.head = null;
+  }
+
+  bool is_empty() {
+    return equals(this.head, null);
+  }
+
+  
+  unit insert(Object o) {
+    ListItem new_item = new ListItem(o);
+    new_item.next = this.head;
+    if? (ListItem old_head = this.head)
+      old_head.prev = new_item;
+    this.head = new_item;
+    return;
+  }
+
+  
+  unit remove(ListItem item) {
+    if (equals(item, this.head)) {
+      
+      this.head = item.next;
+      if? (ListItem next = item.next) 
+        next.prev = null;
+    } else {
+      
+      if? (ListItem prev = item.prev) {
+        prev.next = item.next;
+        if? (ListItem next = item.next)
+           next.prev = prev;
+      } else fail ( "invalid list" );
+    }
+    return;    
+  }
+
+};
+
+
+
+
+
+# 3 "tetris.oat" 2
+
+# 1 "lib/math.oat" 1
+
+
+
+int oat_div (int a, int b) extern
+int oat_mod (int a, int b) extern
+ 
+# 4 "tetris.oat" 2
 class Shape <: Object {
   int[][] points;
   int [] center;
@@ -9,10 +145,10 @@ class Shape <: Object {
   this.center = {0,0};
   {
     if(type == 0){
-      /*[]
-  	[]
-  	[]
-  	[]*/
+      
+
+
+
       this.points[0][0]= 0;
       this.points[0][1]= 0;
       this.points[1][0]= 0;
@@ -26,8 +162,8 @@ class Shape <: Object {
       this.center[1] = 3;
     }
     else if (type == 1){
-      /*[][]
-  	[][]*/
+      
+
       this.points[0][0]= 0;
       this.points[0][1]= 0;
       this.points[1][0]= 1;
@@ -41,8 +177,8 @@ class Shape <: Object {
       this.center[1] = 1;
     }
     else if (type == 2){
-      /*  []
-        [][][] */
+      
+
       this.points[0][0]= 1;
       this.points[0][1]= 0;
       this.points[1][0]= 0;
@@ -56,8 +192,8 @@ class Shape <: Object {
       this.center[1] = 1;
     }
     else if (type == 3){
-      /*[][]
-  	  [][]*/
+      
+
       this.points[0][0]= 0;
       this.points[0][1]= 0;
       this.points[1][0]= 1;
@@ -71,8 +207,8 @@ class Shape <: Object {
       this.center[1] = 1;
     }
     else if (type == 4){
-      /*  [][]
-  	[][]*/
+      
+
       this.points[0][0]= 1;
       this.points[0][1]= 0;
       this.points[1][0]= 2;
@@ -86,9 +222,9 @@ class Shape <: Object {
       this.center[1] = 1;
     }
     else if (type == 5){
-      /*[][]
-  	  []
-  	  []*/
+      
+
+
       this.points[0][0]= 0;
       this.points[0][1]= 0;
       this.points[1][0]= 1;
@@ -102,9 +238,9 @@ class Shape <: Object {
       this.center[1] = 2;
     }
     else if (type == 6){
-      /*[][]
-  	[]
-  	[]*/
+      
+
+
       this.points[0][0]= 0;
       this.points[0][1]= 0;
       this.points[1][0]= 1;
@@ -180,17 +316,17 @@ class Shape <: Object {
 	  {
 	    int temp = 0;
 
-	    /* translate center to origin*/
+	    
 	    this.points[i][0] =  this.points[i][0] - this.center[0];
 	    this.points[i][1] =  this.points[i][1] - this.center[1];
 
-	    /*rotate 90   [0 -1]
-	                   [1  0]*/ 
+	     
+
 	    temp =  -1*this.points[i][1];
 	    this.points[i][1] =  this.points[i][0];
 	    this.points[i][0] = temp;
 	    
-	   /* translate back*/
+	   
             this.points[i][0] =  this.points[i][0] + this.center[0];
 	    this.points[i][1] =  this.points[i][1] + this.center[1];
 
@@ -226,17 +362,17 @@ class Shape <: Object {
 	  {
 	    int temp = 0;
 
-	    /* translate center to origin*/
+	    
 	    this.points[i][0] =  this.points[i][0] - this.center[0];
 	    this.points[i][1] =  this.points[i][1] - this.center[1];
 
-	    /*rotate 90   [0 1]
-	                   [-1  0]*/ 
+	     
+
 	    temp =  this.points[i][1];
 	    this.points[i][1] =  -1*this.points[i][0];
 	    this.points[i][0] = temp;
 
-	   /* translate back*/
+	   
             this.points[i][0] =  this.points[i][0] + this.center[0];
 	    this.points[i][1] =  this.points[i][1] + this.center[1];
 
@@ -314,7 +450,7 @@ class State <: Object {
 	  collided = true;
 	}
     }
-    /*Collision happened*/
+    
     if(collided){
       this.make_new_shape();
      for(int i = 0; i<4; i=i+1;){
@@ -342,7 +478,7 @@ class State <: Object {
 	    this.grid[l][m] = this.grid[l][m-1];
 	  }
 	}
-	/* Handle 0th row*/
+	
 	for(int l = 0; l<10;l=l+1;){
 	    this.grid[l][0] =0;
 	  }
@@ -376,7 +512,7 @@ unit instructions() {
 
 
 unit draw(int[][] grid){
-  /*con_cleanup();*/
+  
   for(int i = 0; i < 10; i=i+1;){
     for(int j = 0; j < 50; j=j+1;){
       con_move(2*i,j);
