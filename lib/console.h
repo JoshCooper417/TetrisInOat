@@ -11,11 +11,14 @@
 /* Sleep for some number of seconds. */
 void con_sleep(int duration);
 
-/* Print str at the cursor location. */
-void con_print(char *str);
+
+/* Print an int */
+void con_print_int(int score);
 
 /* Print ch at the cursor location. */
 void con_printch(int ch);
+
+int get_rand_lt(int bound);
 
 /* Move the cursor to a new location. */
 void con_move(int x, int y);
@@ -50,6 +53,9 @@ int con_color(int c);
 
 /* Get the bold version of an attribute. */
 int con_bold(int a);
+
+/* Set a color. */
+void set_color(int c);
 
 /* Get the width of the terminal. */
 int con_width();

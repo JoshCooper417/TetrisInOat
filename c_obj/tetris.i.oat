@@ -21,6 +21,12 @@ unit con_print(string str) extern
 unit con_printch(int ch) extern
 
 
+unit con_print_int(int score) extern
+
+
+int get_rand_lt(int bound) extern
+
+
 unit con_move(int x, int y) extern
 
 
@@ -45,6 +51,9 @@ int con_getch() extern
 int con_color(int c) extern
 
 
+unit set_color(int c) extern
+
+
 int con_bold(int c) extern
 
 
@@ -59,90 +68,14 @@ int con_sleep(int amt) extern
 int con_halfdelay(int x) extern
 
 # 2 "tetris.oat" 2
-
-# 1 "lib/list.oat" 1
-
-
-
-
-
-bool equals(Object? o1, Object? o2) {
-  return o1 == o2;
-}
-
-class ListItem <: Object {
-  Object? obj;
-  ListItem? prev;
-  ListItem? next;
-
-  new (Object? o)() {
-    this.obj = o;
-    this.prev = null;
-    this.next = null;
-  }
-};
-
-class List <: Object {
-  ListItem? head;
-
-  new ()() {
-    this.head = null;
-  }
-
-  bool is_empty() {
-    return equals(this.head, null);
-  }
-
-  
-  unit insert(Object o) {
-    ListItem new_item = new ListItem(o);
-    new_item.next = this.head;
-    if? (ListItem old_head = this.head)
-      old_head.prev = new_item;
-    this.head = new_item;
-    return;
-  }
-
-  
-  unit remove(ListItem item) {
-    if (equals(item, this.head)) {
-      
-      this.head = item.next;
-      if? (ListItem next = item.next) 
-        next.prev = null;
-    } else {
-      
-      if? (ListItem prev = item.prev) {
-        prev.next = item.next;
-        if? (ListItem next = item.next)
-           next.prev = prev;
-      } else fail ( "invalid list" );
-    }
-    return;    
-  }
-
-};
-
-
-
-
-
-# 3 "tetris.oat" 2
-
-# 1 "lib/math.oat" 1
-
-
-
-int oat_div (int a, int b) extern
-int oat_mod (int a, int b) extern
- 
-# 4 "tetris.oat" 2
 class Shape <: Object {
   int[][] points;
   int [] center;
+  int color;
   new(int type)()
    this.points = {{0,0},{0,0},{0,0},{0,0}};
   this.center = {0,0};
+  this.color = get_rand_lt(6)+1;
   {
     if(type == 0){
       
@@ -402,13 +335,14 @@ class State <: Object {
   int type;
   int[][] grid;
   new ()() 
+    
     this.shape = new Shape(0);
   this.grid = new int[][10](fun i -> new int[50](fun j -> 0));
   {
   }
 
   unit make_new_shape(){
-    this.type = this.type + 1;
+    this.type = get_rand_lt(7);
     if(this.type == 7){
       this.type = 0;
     }
@@ -420,10 +354,12 @@ class State <: Object {
     return;
   }
 
-  bool update(int k) {
-     bool collided = false;
-     bool returnVal = false;
+  
+  bool[] update(int k) {
+    bool collided = false;
+    bool[] returnVal = {false,false};
     int[][] original_points = {{0,0},{0,0},{0,0},{0,0}};
+    int color = this.shape.color;
     for(int i = 0; i < 4; i = i + 1;)
 	    {
 	      original_points[i][0] = this.shape.points[i][0];
@@ -447,7 +383,7 @@ class State <: Object {
       int shapex = this.shape.points[i][0];
       int shapey = this.shape.points[i][1];
 
-      if((this.grid[shapex][shapey]==1) | (shapey == 49)){
+      if((this.grid[shapex][shapey]!=0) | (shapey == 49)){
 	  collided = true;
 	}
     }
@@ -457,7 +393,7 @@ class State <: Object {
      for(int i = 0; i<4; i=i+1;){
 	int old_shapex = original_points[i][0];
 	int old_shapey = original_points[i][1];
-      	this.grid[old_shapex][old_shapey] = 1;
+      	this.grid[old_shapex][old_shapey] = color;
      }
    for(int j = 0; j< 50;j=j+1;){
       bool complete = true;
@@ -466,6 +402,7 @@ class State <: Object {
 	  complete = false;
       }
       if(complete){
+	      returnVal[1] = true;
 	for(int m = j; m > 0; m = m -1;){
 	  for(int l = 0; l<10;l=l+1;){
 	    this.grid[l][m] = this.grid[l][m-1];
@@ -480,7 +417,7 @@ class State <: Object {
    
    	for(int l = 0; l<10;l=l+1;){
 	  if(this.grid[l][0] != 0)
-	    returnVal = true;
+	    returnVal[0] = true;
 	  }
     }
 
@@ -489,17 +426,15 @@ class State <: Object {
       for(int i = 0; i<4; i=i+1;){
 	int shapex = this.shape.points[i][0];
 	int shapey = this.shape.points[i][1];
-	this.grid[shapex][shapey] = 1;
+	this.grid[shapex][shapey] = color;
      }
      }
 
      return returnVal;
   }
-  unit display() {
-    int color = 0;
+  unit display(int score) {
     con_clear();
-    color = con_color(143);
-    draw(this.grid);
+    draw(this.grid, score);
     con_refresh();
     return;
   }
@@ -520,16 +455,22 @@ unit instructions() {
 }
 
 
-unit draw(int[][] grid){
+unit draw(int[][] grid, int score){
   
   for(int i = 0; i < 10; i=i+1;){
     for(int j = 0; j < 50; j=j+1;){
       con_move(2*i,j);
-      if(grid[i][j]==1){
+      if(grid[i][j]!=0){
+	set_color(grid[i][j]);
 	con_print("[]");
       }
     }
   }
+  con_move(0,59);
+  set_color(3);
+  con_print("Score: ");
+  con_move(0,60);
+  con_print_int(score);
   return;
 }
 
@@ -538,6 +479,8 @@ unit draw(int[][] grid){
 int program(int argc, string[] argv) {
   int minx = 80;
   int miny = 25;
+  int score = 0;
+  bool[] updated = {false, false};
   print_string("HERE\n");
    con_init();
   instructions();
@@ -549,9 +492,13 @@ int program(int argc, string[] argv) {
        state.init();
     something = con_halfdelay(1);  
     while ((k != 27) & (!lost)) {
-      state.display();
+      state.display(score);
       k = con_getch();
-     lost = state.update(k);
+      updated = state.update(k);
+      lost = updated[0];
+      if(updated[1]){
+	score = score + 1;
+      }
     }
     con_cleanup();
   } else {

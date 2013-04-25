@@ -1,4 +1,5 @@
 #include "console.h"
+#include <stdlib.h>
 
 /* Much of the ncurses initialization comes from the robotfindskitten
  * POSIX C implementation. */
@@ -14,6 +15,13 @@ void con_print(char *str) {
     x++;
   }
 }
+
+void con_print_int(int score){
+  char snum[4];
+  sprintf(snum,"%d",score);
+  con_print(snum);
+}
+
 
 void con_printch(int ch) {
   addch(ch);
@@ -93,7 +101,7 @@ void con_init() {
   cbreak();
   if (has_colors()) {
     start_color();
-    init_pair(COLOR_BLACK, COLOR_BLACK, COLOR_BLACK);
+    init_pair(COLOR_CYAN, COLOR_CYAN, COLOR_BLACK);
     init_pair(COLOR_GREEN, COLOR_GREEN, COLOR_BLACK);
     init_pair(COLOR_RED, COLOR_RED, COLOR_BLACK);
     init_pair(COLOR_CYAN, COLOR_CYAN, COLOR_BLACK);
@@ -102,6 +110,14 @@ void con_init() {
     init_pair(COLOR_BLUE, COLOR_BLUE, COLOR_BLACK);
     init_pair(COLOR_YELLOW, COLOR_YELLOW, COLOR_BLACK);
   }
+}
+
+int get_rand_lt(int bound){
+return rand() % bound;
+}
+
+void set_color(int c){
+  attron(COLOR_PAIR(c));
 }
 
 int con_halfdelay(int t) {
