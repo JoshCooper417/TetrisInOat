@@ -44,7 +44,7 @@ declare i8* @string_of_array({ i32, [ 0 x i32 ] }*)
 \00", align 4
 @_const_str10 = alias bitcast([ 6 x i8 ]* @_const_str10.str. to i8*)@_const_str9.str. = private unnamed_addr constant [ 8 x i8 ] c "Score: \00", align 4
 @_const_str9 = alias bitcast([ 8 x i8 ]* @_const_str9.str. to i8*)@_const_str8.str. = private unnamed_addr constant [ 3 x i8 ] c "[]\00", align 4
-@_const_str8 = alias bitcast([ 3 x i8 ]* @_const_str8.str. to i8*)@_const_str7.str. = private unnamed_addr constant [ 141 x i8 ] c "
+@_const_str8 = alias bitcast([ 3 x i8 ]* @_const_str8.str. to i8*)@_const_str7.str. = private unnamed_addr constant [ 159 x i8 ] c "
     TETRIS. 
 
       j - Move left 
@@ -53,1109 +53,1140 @@ declare i8* @string_of_array({ i32, [ 0 x i32 ] }*)
 
       i - Rotate right 
 
-      h - Rotate left 
+      k - Rotate left 
+
+      esc -Quit 
 
       [Press any key to begin]
 \00", align 4
-@_const_str7 = alias bitcast([ 141 x i8 ]* @_const_str7.str. to i8*)@_const_str6.str. = private unnamed_addr constant [ 6 x i8 ] c "State\00", align 4
+@_const_str7 = alias bitcast([ 159 x i8 ]* @_const_str7.str. to i8*)@_const_str6.str. = private unnamed_addr constant [ 6 x i8 ] c "State\00", align 4
 @_const_str6 = alias bitcast([ 6 x i8 ]* @_const_str6.str. to i8*)@_const_str5.str. = private unnamed_addr constant [ 6 x i8 ] c "Shape\00", align 4
 @_const_str5 = alias bitcast([ 6 x i8 ]* @_const_str5.str. to i8*)@_const_str4.str. = private unnamed_addr constant [ 7 x i8 ] c "Object\00", align 4
 @_const_str4 = alias bitcast([ 7 x i8 ]* @_const_str4.str. to i8*)@_State_vtable3 = private constant %_State_vtable {%_Object_vtable* @_Object_vtable1, i8* (%Object*)* @_Object_get_name, void (%State*)* @_State_make_new_shape, void (%State*)* @_State_init, { i32, [ 0 x i1 ] }* (%State*, i32)* @_State_update, void (%State*, i32)* @_State_display}, align 4
 @_Shape_vtable2 = private constant %_Shape_vtable {%_Object_vtable* @_Object_vtable1, i8* (%Object*)* @_Object_get_name, void (%Shape*)* @_Shape_move_down, void (%Shape*)* @_Shape_move_left, void (%Shape*)* @_Shape_move_right, void (%Shape*)* @_Shape_rotate_right, void (%Shape*)* @_Shape_rotate_left}, align 4
 @_Object_vtable1 = private constant %_Object_vtable {{  }* null, i8* (%Object*)* @_Object_get_name}, align 4
 define void @oat_init (){
-__fresh306:
+__fresh311:
   ret void
 }
 
 
-define i32 @program (i32 %argc1966, { i32, [ 0 x i8* ] }* %argv1964){
-__fresh299:
-  %argc_slot1967 = alloca i32
-  store i32 %argc1966, i32* %argc_slot1967
-  %argv_slot1965 = alloca { i32, [ 0 x i8* ] }*
-  store { i32, [ 0 x i8* ] }* %argv1964, { i32, [ 0 x i8* ] }** %argv_slot1965
-  %vdecl_slot1968 = alloca i32
-  store i32 80, i32* %vdecl_slot1968
-  %vdecl_slot1969 = alloca i32
-  store i32 25, i32* %vdecl_slot1969
-  %vdecl_slot1970 = alloca i32
-  store i32 0, i32* %vdecl_slot1970
-  %array_ptr1971 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
-  %array1972 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1971 to { i32, [ 0 x i1 ] }* 
-  %index_ptr1973 = getelementptr { i32, [ 0 x i1 ] }* %array1972, i32 0, i32 1, i32 0
-  store i1 0, i1* %index_ptr1973
-  %index_ptr1974 = getelementptr { i32, [ 0 x i1 ] }* %array1972, i32 0, i32 1, i32 1
-  store i1 0, i1* %index_ptr1974
-  %vdecl_slot1975 = alloca { i32, [ 0 x i1 ] }*
-  store { i32, [ 0 x i1 ] }* %array1972, { i32, [ 0 x i1 ] }** %vdecl_slot1975
+define i32 @program (i32 %argc1975, { i32, [ 0 x i8* ] }* %argv1973){
+__fresh304:
+  %argc_slot1976 = alloca i32
+  store i32 %argc1975, i32* %argc_slot1976
+  %argv_slot1974 = alloca { i32, [ 0 x i8* ] }*
+  store { i32, [ 0 x i8* ] }* %argv1973, { i32, [ 0 x i8* ] }** %argv_slot1974
+  %vdecl_slot1977 = alloca i32
+  store i32 80, i32* %vdecl_slot1977
+  %vdecl_slot1978 = alloca i32
+  store i32 25, i32* %vdecl_slot1978
+  %vdecl_slot1979 = alloca i32
+  store i32 0, i32* %vdecl_slot1979
+  %array_ptr1980 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
+  %array1981 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1980 to { i32, [ 0 x i1 ] }* 
+  %index_ptr1982 = getelementptr { i32, [ 0 x i1 ] }* %array1981, i32 0, i32 1, i32 0
+  store i1 0, i1* %index_ptr1982
+  %index_ptr1983 = getelementptr { i32, [ 0 x i1 ] }* %array1981, i32 0, i32 1, i32 1
+  store i1 0, i1* %index_ptr1983
+  %vdecl_slot1984 = alloca { i32, [ 0 x i1 ] }*
+  store { i32, [ 0 x i1 ] }* %array1981, { i32, [ 0 x i1 ] }** %vdecl_slot1984
   call void @print_string( i8* @_const_str10 )
   call void @con_init(  )
   call void @instructions(  )
-  %ret1976 = call i32 @con_width (  )
-  %lhs_or_call1977 = load i32* %vdecl_slot1968
-  %bop1978 = icmp sge i32 %ret1976, %lhs_or_call1977
-  %ret1979 = call i32 @con_height (  )
-  %lhs_or_call1980 = load i32* %vdecl_slot1969
-  %bop1981 = icmp sge i32 %ret1979, %lhs_or_call1980
-  %bop1982 = and i1 %bop1978, %bop1981
-  br i1 %bop1982, label %__then298, label %__else297
-
-__fresh300:
-  br label %__then298
-
-__then298:
-  %mem_ptr1983 = call i32* @oat_malloc ( i32 20 )
-  %obj1984 = bitcast i32* %mem_ptr1983 to %State* 
-  %new_obj1985 = call %State* @_State_ctor ( %State* %obj1984 )
-  %vdecl_slot1986 = alloca %State*
-  store %State* %new_obj1985, %State** %vdecl_slot1986
-  %vdecl_slot1987 = alloca i1
-  store i1 0, i1* %vdecl_slot1987
-  %vdecl_slot1988 = alloca i32
-  store i32 0, i32* %vdecl_slot1988
-  %vdecl_slot1989 = alloca i32
-  store i32 0, i32* %vdecl_slot1989
-  %lhs_or_call1990 = load %State** %vdecl_slot1986
-  %vtmp1992 = getelementptr %State* %lhs_or_call1990, i32 0, i32 0
-  %vtable1991 = load %_State_vtable** %vtmp1992
-  %fptmp1993 = getelementptr %_State_vtable* %vtable1991, i32 0, i32 3
-  %method1994 = load void (%State*)** %fptmp1993
-  call void %method1994( %State* %lhs_or_call1990 )
-  %ret1995 = call i32 @con_halfdelay ( i32 1 )
-  store i32 %ret1995, i32* %vdecl_slot1989
-  br label %__cond292
-
-__cond292:
-  %lhs_or_call1996 = load i32* %vdecl_slot1988
-  %bop1997 = icmp ne i32 %lhs_or_call1996, 27
-  %lhs_or_call1998 = load i1* %vdecl_slot1987
-  %unop1999 = icmp eq i1 %lhs_or_call1998, 0
-  %bop2000 = and i1 %bop1997, %unop1999
-  br i1 %bop2000, label %__body291, label %__post290
-
-__fresh301:
-  br label %__body291
-
-__body291:
-  %lhs_or_call2002 = load %State** %vdecl_slot1986
-  %vtmp2004 = getelementptr %State* %lhs_or_call2002, i32 0, i32 0
-  %vtable2003 = load %_State_vtable** %vtmp2004
-  %fptmp2005 = getelementptr %_State_vtable* %vtable2003, i32 0, i32 5
-  %method2006 = load void (%State*, i32)** %fptmp2005
-  %lhs_or_call2001 = load i32* %vdecl_slot1970
-  call void %method2006( %State* %lhs_or_call2002, i32 %lhs_or_call2001 )
-  %ret2007 = call i32 @con_getch (  )
-  store i32 %ret2007, i32* %vdecl_slot1988
-  %lhs_or_call2009 = load %State** %vdecl_slot1986
-  %vtmp2011 = getelementptr %State* %lhs_or_call2009, i32 0, i32 0
-  %vtable2010 = load %_State_vtable** %vtmp2011
-  %fptmp2012 = getelementptr %_State_vtable* %vtable2010, i32 0, i32 4
-  %method2013 = load { i32, [ 0 x i1 ] }* (%State*, i32)** %fptmp2012
-  %lhs_or_call2008 = load i32* %vdecl_slot1988
-  %ret2014 = call { i32, [ 0 x i1 ] }* %method2013 ( %State* %lhs_or_call2009, i32 %lhs_or_call2008 )
-  store { i32, [ 0 x i1 ] }* %ret2014, { i32, [ 0 x i1 ] }** %vdecl_slot1975
-  %lhs_or_call2015 = load { i32, [ 0 x i1 ] }** %vdecl_slot1975
-  %bound_ptr2017 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2015, i32 0, i32 0
-  %bound2018 = load i32* %bound_ptr2017
-  call void @oat_array_bounds_check( i32 %bound2018, i32 0 )
-  %elt2016 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2015, i32 0, i32 1, i32 0
-  %lhs_or_call2019 = load i1* %elt2016
-  store i1 %lhs_or_call2019, i1* %vdecl_slot1987
-  %lhs_or_call2020 = load { i32, [ 0 x i1 ] }** %vdecl_slot1975
-  %bound_ptr2022 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2020, i32 0, i32 0
-  %bound2023 = load i32* %bound_ptr2022
-  call void @oat_array_bounds_check( i32 %bound2023, i32 1 )
-  %elt2021 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2020, i32 0, i32 1, i32 1
-  %lhs_or_call2024 = load i1* %elt2021
-  br i1 %lhs_or_call2024, label %__then295, label %__else294
-
-__fresh302:
-  br label %__then295
-
-__then295:
-  %lhs_or_call2025 = load i32* %vdecl_slot1970
-  %bop2026 = add i32 %lhs_or_call2025, 1
-  store i32 %bop2026, i32* %vdecl_slot1970
-  br label %__merge293
-
-__fresh303:
-  br label %__else294
-
-__else294:
-  br label %__merge293
-
-__merge293:
-  br label %__cond292
-
-__fresh304:
-  br label %__post290
-
-__post290:
-  call void @con_cleanup(  )
-  br label %__merge296
+  %ret1985 = call i32 @con_width (  )
+  %lhs_or_call1986 = load i32* %vdecl_slot1977
+  %bop1987 = icmp sge i32 %ret1985, %lhs_or_call1986
+  %ret1988 = call i32 @con_height (  )
+  %lhs_or_call1989 = load i32* %vdecl_slot1978
+  %bop1990 = icmp sge i32 %ret1988, %lhs_or_call1989
+  %bop1991 = and i1 %bop1987, %bop1990
+  br i1 %bop1991, label %__then303, label %__else302
 
 __fresh305:
-  br label %__else297
+  br label %__then303
 
-__else297:
+__then303:
+  %mem_ptr1992 = call i32* @oat_malloc ( i32 20 )
+  %obj1993 = bitcast i32* %mem_ptr1992 to %State* 
+  %new_obj1994 = call %State* @_State_ctor ( %State* %obj1993 )
+  %vdecl_slot1995 = alloca %State*
+  store %State* %new_obj1994, %State** %vdecl_slot1995
+  %vdecl_slot1996 = alloca i1
+  store i1 0, i1* %vdecl_slot1996
+  %vdecl_slot1997 = alloca i32
+  store i32 0, i32* %vdecl_slot1997
+  %vdecl_slot1998 = alloca i32
+  store i32 0, i32* %vdecl_slot1998
+  %lhs_or_call1999 = load %State** %vdecl_slot1995
+  %vtmp2001 = getelementptr %State* %lhs_or_call1999, i32 0, i32 0
+  %vtable2000 = load %_State_vtable** %vtmp2001
+  %fptmp2002 = getelementptr %_State_vtable* %vtable2000, i32 0, i32 3
+  %method2003 = load void (%State*)** %fptmp2002
+  call void %method2003( %State* %lhs_or_call1999 )
+  %ret2004 = call i32 @con_halfdelay ( i32 1 )
+  store i32 %ret2004, i32* %vdecl_slot1998
+  br label %__cond297
+
+__cond297:
+  %lhs_or_call2005 = load i32* %vdecl_slot1997
+  %bop2006 = icmp ne i32 %lhs_or_call2005, 27
+  %lhs_or_call2007 = load i1* %vdecl_slot1996
+  %unop2008 = icmp eq i1 %lhs_or_call2007, 0
+  %bop2009 = and i1 %bop2006, %unop2008
+  br i1 %bop2009, label %__body296, label %__post295
+
+__fresh306:
+  br label %__body296
+
+__body296:
+  %lhs_or_call2011 = load %State** %vdecl_slot1995
+  %vtmp2013 = getelementptr %State* %lhs_or_call2011, i32 0, i32 0
+  %vtable2012 = load %_State_vtable** %vtmp2013
+  %fptmp2014 = getelementptr %_State_vtable* %vtable2012, i32 0, i32 5
+  %method2015 = load void (%State*, i32)** %fptmp2014
+  %lhs_or_call2010 = load i32* %vdecl_slot1979
+  call void %method2015( %State* %lhs_or_call2011, i32 %lhs_or_call2010 )
+  %ret2016 = call i32 @con_getch (  )
+  store i32 %ret2016, i32* %vdecl_slot1997
+  %lhs_or_call2018 = load %State** %vdecl_slot1995
+  %vtmp2020 = getelementptr %State* %lhs_or_call2018, i32 0, i32 0
+  %vtable2019 = load %_State_vtable** %vtmp2020
+  %fptmp2021 = getelementptr %_State_vtable* %vtable2019, i32 0, i32 4
+  %method2022 = load { i32, [ 0 x i1 ] }* (%State*, i32)** %fptmp2021
+  %lhs_or_call2017 = load i32* %vdecl_slot1997
+  %ret2023 = call { i32, [ 0 x i1 ] }* %method2022 ( %State* %lhs_or_call2018, i32 %lhs_or_call2017 )
+  store { i32, [ 0 x i1 ] }* %ret2023, { i32, [ 0 x i1 ] }** %vdecl_slot1984
+  %lhs_or_call2024 = load { i32, [ 0 x i1 ] }** %vdecl_slot1984
+  %bound_ptr2026 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2024, i32 0, i32 0
+  %bound2027 = load i32* %bound_ptr2026
+  call void @oat_array_bounds_check( i32 %bound2027, i32 0 )
+  %elt2025 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2024, i32 0, i32 1, i32 0
+  %lhs_or_call2028 = load i1* %elt2025
+  store i1 %lhs_or_call2028, i1* %vdecl_slot1996
+  %lhs_or_call2029 = load { i32, [ 0 x i1 ] }** %vdecl_slot1984
+  %bound_ptr2031 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2029, i32 0, i32 0
+  %bound2032 = load i32* %bound_ptr2031
+  call void @oat_array_bounds_check( i32 %bound2032, i32 1 )
+  %elt2030 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call2029, i32 0, i32 1, i32 1
+  %lhs_or_call2033 = load i1* %elt2030
+  br i1 %lhs_or_call2033, label %__then300, label %__else299
+
+__fresh307:
+  br label %__then300
+
+__then300:
+  %lhs_or_call2034 = load i32* %vdecl_slot1979
+  %bop2035 = add i32 %lhs_or_call2034, 1
+  store i32 %bop2035, i32* %vdecl_slot1979
+  br label %__merge298
+
+__fresh308:
+  br label %__else299
+
+__else299:
+  br label %__merge298
+
+__merge298:
+  br label %__cond297
+
+__fresh309:
+  br label %__post295
+
+__post295:
+  call void @con_cleanup(  )
+  br label %__merge301
+
+__fresh310:
+  br label %__else302
+
+__else302:
   call void @con_cleanup(  )
   call void @print_string( i8* @_const_str11 )
-  br label %__merge296
+  br label %__merge301
 
-__merge296:
+__merge301:
   call void @print_string( i8* @_const_str12 )
   ret i32 0
 }
 
 
-define void @draw ({ i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %grid1925, i32 %score1923){
-__fresh283:
-  %grid_slot1926 = alloca { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }*
-  store { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %grid1925, { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %grid_slot1926
-  %score_slot1924 = alloca i32
-  store i32 %score1923, i32* %score_slot1924
-  %vdecl_slot1927 = alloca i32
-  store i32 0, i32* %vdecl_slot1927
-  br label %__cond276
-
-__cond276:
-  %lhs_or_call1928 = load i32* %vdecl_slot1927
-  %bop1929 = icmp slt i32 %lhs_or_call1928, 10
-  br i1 %bop1929, label %__body275, label %__post274
-
-__fresh284:
-  br label %__body275
-
-__body275:
-  %vdecl_slot1930 = alloca i32
-  store i32 0, i32* %vdecl_slot1930
-  br label %__cond279
-
-__cond279:
-  %lhs_or_call1931 = load i32* %vdecl_slot1930
-  %bop1932 = icmp slt i32 %lhs_or_call1931, 50
-  br i1 %bop1932, label %__body278, label %__post277
-
-__fresh285:
-  br label %__body278
-
-__body278:
-  %lhs_or_call1933 = load i32* %vdecl_slot1930
-  %lhs_or_call1934 = load i32* %vdecl_slot1927
-  %bop1935 = mul i32 2, %lhs_or_call1934
-  call void @con_move( i32 %bop1935, i32 %lhs_or_call1933 )
-  %lhs_or_call1936 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %grid_slot1926
-  %lhs_or_call1937 = load i32* %vdecl_slot1927
-  %bound_ptr1939 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1936, i32 0, i32 0
-  %bound1940 = load i32* %bound_ptr1939
-  call void @oat_array_bounds_check( i32 %bound1940, i32 %lhs_or_call1937 )
-  %elt1938 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1936, i32 0, i32 1, i32 %lhs_or_call1937
-  %lhs_or_call1941 = load { i32, [ 0 x i32 ] }** %elt1938
-  %lhs_or_call1942 = load i32* %vdecl_slot1930
-  %bound_ptr1944 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1941, i32 0, i32 0
-  %bound1945 = load i32* %bound_ptr1944
-  call void @oat_array_bounds_check( i32 %bound1945, i32 %lhs_or_call1942 )
-  %elt1943 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1941, i32 0, i32 1, i32 %lhs_or_call1942
-  %lhs_or_call1946 = load i32* %elt1943
-  %bop1947 = icmp ne i32 %lhs_or_call1946, 0
-  br i1 %bop1947, label %__then282, label %__else281
-
-__fresh286:
-  br label %__then282
-
-__then282:
-  %lhs_or_call1948 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %grid_slot1926
-  %lhs_or_call1949 = load i32* %vdecl_slot1927
-  %bound_ptr1951 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1948, i32 0, i32 0
-  %bound1952 = load i32* %bound_ptr1951
-  call void @oat_array_bounds_check( i32 %bound1952, i32 %lhs_or_call1949 )
-  %elt1950 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1948, i32 0, i32 1, i32 %lhs_or_call1949
-  %lhs_or_call1953 = load { i32, [ 0 x i32 ] }** %elt1950
-  %lhs_or_call1954 = load i32* %vdecl_slot1930
-  %bound_ptr1956 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1953, i32 0, i32 0
-  %bound1957 = load i32* %bound_ptr1956
-  call void @oat_array_bounds_check( i32 %bound1957, i32 %lhs_or_call1954 )
-  %elt1955 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1953, i32 0, i32 1, i32 %lhs_or_call1954
-  %lhs_or_call1958 = load i32* %elt1955
-  call void @set_color( i32 %lhs_or_call1958 )
-  call void @con_print( i8* @_const_str8 )
-  br label %__merge280
-
-__fresh287:
-  br label %__else281
-
-__else281:
-  br label %__merge280
-
-__merge280:
-  %lhs_or_call1959 = load i32* %vdecl_slot1930
-  %bop1960 = add i32 %lhs_or_call1959, 1
-  store i32 %bop1960, i32* %vdecl_slot1930
-  br label %__cond279
-
+define void @draw ({ i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %grid1934, i32 %score1932){
 __fresh288:
-  br label %__post277
+  %grid_slot1935 = alloca { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }*
+  store { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %grid1934, { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %grid_slot1935
+  %score_slot1933 = alloca i32
+  store i32 %score1932, i32* %score_slot1933
+  %vdecl_slot1936 = alloca i32
+  store i32 0, i32* %vdecl_slot1936
+  br label %__cond281
 
-__post277:
-  %lhs_or_call1961 = load i32* %vdecl_slot1927
-  %bop1962 = add i32 %lhs_or_call1961, 1
-  store i32 %bop1962, i32* %vdecl_slot1927
-  br label %__cond276
+__cond281:
+  %lhs_or_call1937 = load i32* %vdecl_slot1936
+  %bop1938 = icmp slt i32 %lhs_or_call1937, 10
+  br i1 %bop1938, label %__body280, label %__post279
 
 __fresh289:
-  br label %__post274
+  br label %__body280
 
-__post274:
+__body280:
+  %vdecl_slot1939 = alloca i32
+  store i32 0, i32* %vdecl_slot1939
+  br label %__cond284
+
+__cond284:
+  %lhs_or_call1940 = load i32* %vdecl_slot1939
+  %bop1941 = icmp slt i32 %lhs_or_call1940, 50
+  br i1 %bop1941, label %__body283, label %__post282
+
+__fresh290:
+  br label %__body283
+
+__body283:
+  %lhs_or_call1942 = load i32* %vdecl_slot1939
+  %lhs_or_call1943 = load i32* %vdecl_slot1936
+  %bop1944 = mul i32 2, %lhs_or_call1943
+  call void @con_move( i32 %bop1944, i32 %lhs_or_call1942 )
+  %lhs_or_call1945 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %grid_slot1935
+  %lhs_or_call1946 = load i32* %vdecl_slot1936
+  %bound_ptr1948 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1945, i32 0, i32 0
+  %bound1949 = load i32* %bound_ptr1948
+  call void @oat_array_bounds_check( i32 %bound1949, i32 %lhs_or_call1946 )
+  %elt1947 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1945, i32 0, i32 1, i32 %lhs_or_call1946
+  %lhs_or_call1950 = load { i32, [ 0 x i32 ] }** %elt1947
+  %lhs_or_call1951 = load i32* %vdecl_slot1939
+  %bound_ptr1953 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1950, i32 0, i32 0
+  %bound1954 = load i32* %bound_ptr1953
+  call void @oat_array_bounds_check( i32 %bound1954, i32 %lhs_or_call1951 )
+  %elt1952 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1950, i32 0, i32 1, i32 %lhs_or_call1951
+  %lhs_or_call1955 = load i32* %elt1952
+  %bop1956 = icmp ne i32 %lhs_or_call1955, 0
+  br i1 %bop1956, label %__then287, label %__else286
+
+__fresh291:
+  br label %__then287
+
+__then287:
+  %lhs_or_call1957 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %grid_slot1935
+  %lhs_or_call1958 = load i32* %vdecl_slot1936
+  %bound_ptr1960 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1957, i32 0, i32 0
+  %bound1961 = load i32* %bound_ptr1960
+  call void @oat_array_bounds_check( i32 %bound1961, i32 %lhs_or_call1958 )
+  %elt1959 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1957, i32 0, i32 1, i32 %lhs_or_call1958
+  %lhs_or_call1962 = load { i32, [ 0 x i32 ] }** %elt1959
+  %lhs_or_call1963 = load i32* %vdecl_slot1939
+  %bound_ptr1965 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1962, i32 0, i32 0
+  %bound1966 = load i32* %bound_ptr1965
+  call void @oat_array_bounds_check( i32 %bound1966, i32 %lhs_or_call1963 )
+  %elt1964 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1962, i32 0, i32 1, i32 %lhs_or_call1963
+  %lhs_or_call1967 = load i32* %elt1964
+  call void @set_color( i32 %lhs_or_call1967 )
+  call void @con_print( i8* @_const_str8 )
+  br label %__merge285
+
+__fresh292:
+  br label %__else286
+
+__else286:
+  br label %__merge285
+
+__merge285:
+  %lhs_or_call1968 = load i32* %vdecl_slot1939
+  %bop1969 = add i32 %lhs_or_call1968, 1
+  store i32 %bop1969, i32* %vdecl_slot1939
+  br label %__cond284
+
+__fresh293:
+  br label %__post282
+
+__post282:
+  %lhs_or_call1970 = load i32* %vdecl_slot1936
+  %bop1971 = add i32 %lhs_or_call1970, 1
+  store i32 %bop1971, i32* %vdecl_slot1936
+  br label %__cond281
+
+__fresh294:
+  br label %__post279
+
+__post279:
   call void @con_move( i32 0, i32 59 )
   call void @set_color( i32 3 )
   call void @con_print( i8* @_const_str9 )
   call void @con_move( i32 0, i32 60 )
-  %lhs_or_call1963 = load i32* %score_slot1924
-  call void @con_print_int( i32 %lhs_or_call1963 )
+  %lhs_or_call1972 = load i32* %score_slot1933
+  call void @con_print_int( i32 %lhs_or_call1972 )
   ret void
 }
 
 
 define void @instructions (){
-__fresh273:
-  %vdecl_slot1921 = alloca i32
-  store i32 0, i32* %vdecl_slot1921
+__fresh278:
+  %vdecl_slot1930 = alloca i32
+  store i32 0, i32* %vdecl_slot1930
   call void @con_move( i32 0, i32 0 )
   call void @con_print( i8* @_const_str7 )
-  %ret1922 = call i32 @con_getch (  )
-  store i32 %ret1922, i32* %vdecl_slot1921
+  %ret1931 = call i32 @con_getch (  )
+  store i32 %ret1931, i32* %vdecl_slot1930
   ret void
 }
 
 
-define void @_State_display (%State* %_this1, i32 %score1916){
-__fresh272:
-  %score_slot1917 = alloca i32
-  store i32 %score1916, i32* %score_slot1917
+define void @_State_display (%State* %_this1, i32 %score1925){
+__fresh277:
+  %score_slot1926 = alloca i32
+  store i32 %score1925, i32* %score_slot1926
   call void @con_clear(  )
-  %lhs_or_call1918 = load i32* %score_slot1917
-  %path1919 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1920 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1919
-  call void @draw( { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1920, i32 %lhs_or_call1918 )
+  %lhs_or_call1927 = load i32* %score_slot1926
+  %path1928 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1929 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1928
+  call void @draw( { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1929, i32 %lhs_or_call1927 )
   call void @con_refresh(  )
   ret void
 }
 
 
 define { i32, [ 0 x i1 ] }* @_State_update (%State* %_this1, i32 %k1516){
-__fresh231:
+__fresh234:
   %k_slot1517 = alloca i32
   store i32 %k1516, i32* %k_slot1517
   %vdecl_slot1518 = alloca i1
   store i1 0, i1* %vdecl_slot1518
-  %array_ptr1519 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
+  %array_ptr1519 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 5 )
   %array1520 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1519 to { i32, [ 0 x i1 ] }* 
   %index_ptr1521 = getelementptr { i32, [ 0 x i1 ] }* %array1520, i32 0, i32 1, i32 0
   store i1 0, i1* %index_ptr1521
   %index_ptr1522 = getelementptr { i32, [ 0 x i1 ] }* %array1520, i32 0, i32 1, i32 1
   store i1 0, i1* %index_ptr1522
-  %vdecl_slot1523 = alloca { i32, [ 0 x i1 ] }*
-  store { i32, [ 0 x i1 ] }* %array1520, { i32, [ 0 x i1 ] }** %vdecl_slot1523
-  %array_ptr1524 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 4 )
-  %array1525 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1524 to { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* 
-  %array_ptr1526 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
-  %array1527 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1526 to { i32, [ 0 x i32 ] }* 
-  %index_ptr1528 = getelementptr { i32, [ 0 x i32 ] }* %array1527, i32 0, i32 1, i32 0
-  store i32 0, i32* %index_ptr1528
-  %index_ptr1529 = getelementptr { i32, [ 0 x i32 ] }* %array1527, i32 0, i32 1, i32 1
-  store i32 0, i32* %index_ptr1529
-  %index_ptr1530 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1525, i32 0, i32 1, i32 0
-  store { i32, [ 0 x i32 ] }* %array1527, { i32, [ 0 x i32 ] }** %index_ptr1530
-  %array_ptr1531 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
-  %array1532 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1531 to { i32, [ 0 x i32 ] }* 
-  %index_ptr1533 = getelementptr { i32, [ 0 x i32 ] }* %array1532, i32 0, i32 1, i32 0
+  %index_ptr1523 = getelementptr { i32, [ 0 x i1 ] }* %array1520, i32 0, i32 1, i32 2
+  store i1 0, i1* %index_ptr1523
+  %index_ptr1524 = getelementptr { i32, [ 0 x i1 ] }* %array1520, i32 0, i32 1, i32 3
+  store i1 0, i1* %index_ptr1524
+  %index_ptr1525 = getelementptr { i32, [ 0 x i1 ] }* %array1520, i32 0, i32 1, i32 4
+  store i1 0, i1* %index_ptr1525
+  %vdecl_slot1526 = alloca { i32, [ 0 x i1 ] }*
+  store { i32, [ 0 x i1 ] }* %array1520, { i32, [ 0 x i1 ] }** %vdecl_slot1526
+  %vdecl_slot1527 = alloca i32
+  store i32 1, i32* %vdecl_slot1527
+  %array_ptr1528 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 4 )
+  %array1529 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1528 to { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* 
+  %array_ptr1530 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
+  %array1531 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1530 to { i32, [ 0 x i32 ] }* 
+  %index_ptr1532 = getelementptr { i32, [ 0 x i32 ] }* %array1531, i32 0, i32 1, i32 0
+  store i32 0, i32* %index_ptr1532
+  %index_ptr1533 = getelementptr { i32, [ 0 x i32 ] }* %array1531, i32 0, i32 1, i32 1
   store i32 0, i32* %index_ptr1533
-  %index_ptr1534 = getelementptr { i32, [ 0 x i32 ] }* %array1532, i32 0, i32 1, i32 1
-  store i32 0, i32* %index_ptr1534
-  %index_ptr1535 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1525, i32 0, i32 1, i32 1
-  store { i32, [ 0 x i32 ] }* %array1532, { i32, [ 0 x i32 ] }** %index_ptr1535
-  %array_ptr1536 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
-  %array1537 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1536 to { i32, [ 0 x i32 ] }* 
-  %index_ptr1538 = getelementptr { i32, [ 0 x i32 ] }* %array1537, i32 0, i32 1, i32 0
+  %index_ptr1534 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1529, i32 0, i32 1, i32 0
+  store { i32, [ 0 x i32 ] }* %array1531, { i32, [ 0 x i32 ] }** %index_ptr1534
+  %array_ptr1535 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
+  %array1536 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1535 to { i32, [ 0 x i32 ] }* 
+  %index_ptr1537 = getelementptr { i32, [ 0 x i32 ] }* %array1536, i32 0, i32 1, i32 0
+  store i32 0, i32* %index_ptr1537
+  %index_ptr1538 = getelementptr { i32, [ 0 x i32 ] }* %array1536, i32 0, i32 1, i32 1
   store i32 0, i32* %index_ptr1538
-  %index_ptr1539 = getelementptr { i32, [ 0 x i32 ] }* %array1537, i32 0, i32 1, i32 1
-  store i32 0, i32* %index_ptr1539
-  %index_ptr1540 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1525, i32 0, i32 1, i32 2
-  store { i32, [ 0 x i32 ] }* %array1537, { i32, [ 0 x i32 ] }** %index_ptr1540
-  %array_ptr1541 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
-  %array1542 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1541 to { i32, [ 0 x i32 ] }* 
-  %index_ptr1543 = getelementptr { i32, [ 0 x i32 ] }* %array1542, i32 0, i32 1, i32 0
+  %index_ptr1539 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1529, i32 0, i32 1, i32 1
+  store { i32, [ 0 x i32 ] }* %array1536, { i32, [ 0 x i32 ] }** %index_ptr1539
+  %array_ptr1540 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
+  %array1541 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1540 to { i32, [ 0 x i32 ] }* 
+  %index_ptr1542 = getelementptr { i32, [ 0 x i32 ] }* %array1541, i32 0, i32 1, i32 0
+  store i32 0, i32* %index_ptr1542
+  %index_ptr1543 = getelementptr { i32, [ 0 x i32 ] }* %array1541, i32 0, i32 1, i32 1
   store i32 0, i32* %index_ptr1543
-  %index_ptr1544 = getelementptr { i32, [ 0 x i32 ] }* %array1542, i32 0, i32 1, i32 1
-  store i32 0, i32* %index_ptr1544
-  %index_ptr1545 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1525, i32 0, i32 1, i32 3
-  store { i32, [ 0 x i32 ] }* %array1542, { i32, [ 0 x i32 ] }** %index_ptr1545
-  %vdecl_slot1546 = alloca { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }*
-  store { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1525, { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1546
-  %path1547 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1548 = load %Shape** %path1547
-  %path1549 = getelementptr %Shape* %lhs_or_call1548, i32 0, i32 4
-  %lhs_or_call1550 = load i32* %path1549
-  %vdecl_slot1551 = alloca i32
-  store i32 %lhs_or_call1550, i32* %vdecl_slot1551
-  %vdecl_slot1552 = alloca i32
-  store i32 0, i32* %vdecl_slot1552
+  %index_ptr1544 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1529, i32 0, i32 1, i32 2
+  store { i32, [ 0 x i32 ] }* %array1541, { i32, [ 0 x i32 ] }** %index_ptr1544
+  %array_ptr1545 = call { i32, [ 0 x i32 ] }* @oat_alloc_array ( i32 2 )
+  %array1546 = bitcast { i32, [ 0 x i32 ] }* %array_ptr1545 to { i32, [ 0 x i32 ] }* 
+  %index_ptr1547 = getelementptr { i32, [ 0 x i32 ] }* %array1546, i32 0, i32 1, i32 0
+  store i32 0, i32* %index_ptr1547
+  %index_ptr1548 = getelementptr { i32, [ 0 x i32 ] }* %array1546, i32 0, i32 1, i32 1
+  store i32 0, i32* %index_ptr1548
+  %index_ptr1549 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1529, i32 0, i32 1, i32 3
+  store { i32, [ 0 x i32 ] }* %array1546, { i32, [ 0 x i32 ] }** %index_ptr1549
+  %vdecl_slot1550 = alloca { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }*
+  store { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %array1529, { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1550
+  %path1551 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1552 = load %Shape** %path1551
+  %path1553 = getelementptr %Shape* %lhs_or_call1552, i32 0, i32 4
+  %lhs_or_call1554 = load i32* %path1553
+  %vdecl_slot1555 = alloca i32
+  store i32 %lhs_or_call1554, i32* %vdecl_slot1555
+  %vdecl_slot1556 = alloca i32
+  store i32 0, i32* %vdecl_slot1556
   br label %__cond173
 
 __cond173:
-  %lhs_or_call1553 = load i32* %vdecl_slot1552
-  %bop1554 = icmp slt i32 %lhs_or_call1553, 4
-  br i1 %bop1554, label %__body172, label %__post171
+  %lhs_or_call1557 = load i32* %vdecl_slot1556
+  %bop1558 = icmp slt i32 %lhs_or_call1557, 4
+  br i1 %bop1558, label %__body172, label %__post171
 
-__fresh232:
+__fresh235:
   br label %__body172
 
 __body172:
-  %lhs_or_call1555 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1546
-  %lhs_or_call1556 = load i32* %vdecl_slot1552
-  %bound_ptr1558 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1555, i32 0, i32 0
-  %bound1559 = load i32* %bound_ptr1558
-  call void @oat_array_bounds_check( i32 %bound1559, i32 %lhs_or_call1556 )
-  %elt1557 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1555, i32 0, i32 1, i32 %lhs_or_call1556
-  %lhs_or_call1560 = load { i32, [ 0 x i32 ] }** %elt1557
-  %bound_ptr1562 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1560, i32 0, i32 0
+  %lhs_or_call1559 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1550
+  %lhs_or_call1560 = load i32* %vdecl_slot1556
+  %bound_ptr1562 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1559, i32 0, i32 0
   %bound1563 = load i32* %bound_ptr1562
-  call void @oat_array_bounds_check( i32 %bound1563, i32 0 )
-  %elt1561 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1560, i32 0, i32 1, i32 0
-  %path1564 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1565 = load %Shape** %path1564
-  %path1566 = getelementptr %Shape* %lhs_or_call1565, i32 0, i32 2
-  %lhs_or_call1567 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1566
-  %lhs_or_call1568 = load i32* %vdecl_slot1552
-  %bound_ptr1570 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1567, i32 0, i32 0
-  %bound1571 = load i32* %bound_ptr1570
-  call void @oat_array_bounds_check( i32 %bound1571, i32 %lhs_or_call1568 )
-  %elt1569 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1567, i32 0, i32 1, i32 %lhs_or_call1568
-  %lhs_or_call1572 = load { i32, [ 0 x i32 ] }** %elt1569
-  %bound_ptr1574 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1572, i32 0, i32 0
+  call void @oat_array_bounds_check( i32 %bound1563, i32 %lhs_or_call1560 )
+  %elt1561 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1559, i32 0, i32 1, i32 %lhs_or_call1560
+  %lhs_or_call1564 = load { i32, [ 0 x i32 ] }** %elt1561
+  %bound_ptr1566 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1564, i32 0, i32 0
+  %bound1567 = load i32* %bound_ptr1566
+  call void @oat_array_bounds_check( i32 %bound1567, i32 0 )
+  %elt1565 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1564, i32 0, i32 1, i32 0
+  %path1568 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1569 = load %Shape** %path1568
+  %path1570 = getelementptr %Shape* %lhs_or_call1569, i32 0, i32 2
+  %lhs_or_call1571 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1570
+  %lhs_or_call1572 = load i32* %vdecl_slot1556
+  %bound_ptr1574 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1571, i32 0, i32 0
   %bound1575 = load i32* %bound_ptr1574
-  call void @oat_array_bounds_check( i32 %bound1575, i32 0 )
-  %elt1573 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1572, i32 0, i32 1, i32 0
-  %lhs_or_call1576 = load i32* %elt1573
-  store i32 %lhs_or_call1576, i32* %elt1561
-  %lhs_or_call1577 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1546
-  %lhs_or_call1578 = load i32* %vdecl_slot1552
-  %bound_ptr1580 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1577, i32 0, i32 0
-  %bound1581 = load i32* %bound_ptr1580
-  call void @oat_array_bounds_check( i32 %bound1581, i32 %lhs_or_call1578 )
-  %elt1579 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1577, i32 0, i32 1, i32 %lhs_or_call1578
-  %lhs_or_call1582 = load { i32, [ 0 x i32 ] }** %elt1579
-  %bound_ptr1584 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1582, i32 0, i32 0
+  call void @oat_array_bounds_check( i32 %bound1575, i32 %lhs_or_call1572 )
+  %elt1573 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1571, i32 0, i32 1, i32 %lhs_or_call1572
+  %lhs_or_call1576 = load { i32, [ 0 x i32 ] }** %elt1573
+  %bound_ptr1578 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1576, i32 0, i32 0
+  %bound1579 = load i32* %bound_ptr1578
+  call void @oat_array_bounds_check( i32 %bound1579, i32 0 )
+  %elt1577 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1576, i32 0, i32 1, i32 0
+  %lhs_or_call1580 = load i32* %elt1577
+  store i32 %lhs_or_call1580, i32* %elt1565
+  %lhs_or_call1581 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1550
+  %lhs_or_call1582 = load i32* %vdecl_slot1556
+  %bound_ptr1584 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1581, i32 0, i32 0
   %bound1585 = load i32* %bound_ptr1584
-  call void @oat_array_bounds_check( i32 %bound1585, i32 1 )
-  %elt1583 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1582, i32 0, i32 1, i32 1
-  %path1586 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1587 = load %Shape** %path1586
-  %path1588 = getelementptr %Shape* %lhs_or_call1587, i32 0, i32 2
-  %lhs_or_call1589 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1588
-  %lhs_or_call1590 = load i32* %vdecl_slot1552
-  %bound_ptr1592 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1589, i32 0, i32 0
-  %bound1593 = load i32* %bound_ptr1592
-  call void @oat_array_bounds_check( i32 %bound1593, i32 %lhs_or_call1590 )
-  %elt1591 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1589, i32 0, i32 1, i32 %lhs_or_call1590
-  %lhs_or_call1594 = load { i32, [ 0 x i32 ] }** %elt1591
-  %bound_ptr1596 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1594, i32 0, i32 0
+  call void @oat_array_bounds_check( i32 %bound1585, i32 %lhs_or_call1582 )
+  %elt1583 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1581, i32 0, i32 1, i32 %lhs_or_call1582
+  %lhs_or_call1586 = load { i32, [ 0 x i32 ] }** %elt1583
+  %bound_ptr1588 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1586, i32 0, i32 0
+  %bound1589 = load i32* %bound_ptr1588
+  call void @oat_array_bounds_check( i32 %bound1589, i32 1 )
+  %elt1587 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1586, i32 0, i32 1, i32 1
+  %path1590 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1591 = load %Shape** %path1590
+  %path1592 = getelementptr %Shape* %lhs_or_call1591, i32 0, i32 2
+  %lhs_or_call1593 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1592
+  %lhs_or_call1594 = load i32* %vdecl_slot1556
+  %bound_ptr1596 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1593, i32 0, i32 0
   %bound1597 = load i32* %bound_ptr1596
-  call void @oat_array_bounds_check( i32 %bound1597, i32 1 )
-  %elt1595 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1594, i32 0, i32 1, i32 1
-  %lhs_or_call1598 = load i32* %elt1595
-  store i32 %lhs_or_call1598, i32* %elt1583
-  %lhs_or_call1599 = load i32* %vdecl_slot1552
-  %bop1600 = add i32 %lhs_or_call1599, 1
-  store i32 %bop1600, i32* %vdecl_slot1552
+  call void @oat_array_bounds_check( i32 %bound1597, i32 %lhs_or_call1594 )
+  %elt1595 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1593, i32 0, i32 1, i32 %lhs_or_call1594
+  %lhs_or_call1598 = load { i32, [ 0 x i32 ] }** %elt1595
+  %bound_ptr1600 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1598, i32 0, i32 0
+  %bound1601 = load i32* %bound_ptr1600
+  call void @oat_array_bounds_check( i32 %bound1601, i32 1 )
+  %elt1599 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1598, i32 0, i32 1, i32 1
+  %lhs_or_call1602 = load i32* %elt1599
+  store i32 %lhs_or_call1602, i32* %elt1587
+  %lhs_or_call1603 = load i32* %vdecl_slot1556
+  %bop1604 = add i32 %lhs_or_call1603, 1
+  store i32 %bop1604, i32* %vdecl_slot1556
   br label %__cond173
 
-__fresh233:
+__fresh236:
   br label %__post171
 
 __post171:
-  %vdecl_slot1601 = alloca i32
-  store i32 0, i32* %vdecl_slot1601
+  %vdecl_slot1605 = alloca i32
+  store i32 0, i32* %vdecl_slot1605
   br label %__cond176
 
 __cond176:
-  %lhs_or_call1602 = load i32* %vdecl_slot1601
-  %bop1603 = icmp slt i32 %lhs_or_call1602, 4
-  br i1 %bop1603, label %__body175, label %__post174
+  %lhs_or_call1606 = load i32* %vdecl_slot1605
+  %bop1607 = icmp slt i32 %lhs_or_call1606, 4
+  br i1 %bop1607, label %__body175, label %__post174
 
-__fresh234:
+__fresh237:
   br label %__body175
 
 __body175:
-  %lhs_or_call1604 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1546
-  %lhs_or_call1605 = load i32* %vdecl_slot1601
-  %bound_ptr1607 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1604, i32 0, i32 0
-  %bound1608 = load i32* %bound_ptr1607
-  call void @oat_array_bounds_check( i32 %bound1608, i32 %lhs_or_call1605 )
-  %elt1606 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1604, i32 0, i32 1, i32 %lhs_or_call1605
-  %lhs_or_call1609 = load { i32, [ 0 x i32 ] }** %elt1606
-  %bound_ptr1611 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1609, i32 0, i32 0
+  %lhs_or_call1608 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1550
+  %lhs_or_call1609 = load i32* %vdecl_slot1605
+  %bound_ptr1611 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1608, i32 0, i32 0
   %bound1612 = load i32* %bound_ptr1611
-  call void @oat_array_bounds_check( i32 %bound1612, i32 0 )
-  %elt1610 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1609, i32 0, i32 1, i32 0
-  %lhs_or_call1613 = load i32* %elt1610
-  %vdecl_slot1614 = alloca i32
-  store i32 %lhs_or_call1613, i32* %vdecl_slot1614
-  %lhs_or_call1615 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1546
-  %lhs_or_call1616 = load i32* %vdecl_slot1601
-  %bound_ptr1618 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1615, i32 0, i32 0
-  %bound1619 = load i32* %bound_ptr1618
-  call void @oat_array_bounds_check( i32 %bound1619, i32 %lhs_or_call1616 )
-  %elt1617 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1615, i32 0, i32 1, i32 %lhs_or_call1616
-  %lhs_or_call1620 = load { i32, [ 0 x i32 ] }** %elt1617
-  %bound_ptr1622 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1620, i32 0, i32 0
+  call void @oat_array_bounds_check( i32 %bound1612, i32 %lhs_or_call1609 )
+  %elt1610 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1608, i32 0, i32 1, i32 %lhs_or_call1609
+  %lhs_or_call1613 = load { i32, [ 0 x i32 ] }** %elt1610
+  %bound_ptr1615 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1613, i32 0, i32 0
+  %bound1616 = load i32* %bound_ptr1615
+  call void @oat_array_bounds_check( i32 %bound1616, i32 0 )
+  %elt1614 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1613, i32 0, i32 1, i32 0
+  %lhs_or_call1617 = load i32* %elt1614
+  %vdecl_slot1618 = alloca i32
+  store i32 %lhs_or_call1617, i32* %vdecl_slot1618
+  %lhs_or_call1619 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1550
+  %lhs_or_call1620 = load i32* %vdecl_slot1605
+  %bound_ptr1622 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1619, i32 0, i32 0
   %bound1623 = load i32* %bound_ptr1622
-  call void @oat_array_bounds_check( i32 %bound1623, i32 1 )
-  %elt1621 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1620, i32 0, i32 1, i32 1
-  %lhs_or_call1624 = load i32* %elt1621
-  %vdecl_slot1625 = alloca i32
-  store i32 %lhs_or_call1624, i32* %vdecl_slot1625
-  %path1626 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1627 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1626
-  %lhs_or_call1628 = load i32* %vdecl_slot1614
-  %bound_ptr1630 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1627, i32 0, i32 0
-  %bound1631 = load i32* %bound_ptr1630
-  call void @oat_array_bounds_check( i32 %bound1631, i32 %lhs_or_call1628 )
-  %elt1629 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1627, i32 0, i32 1, i32 %lhs_or_call1628
-  %lhs_or_call1632 = load { i32, [ 0 x i32 ] }** %elt1629
-  %lhs_or_call1633 = load i32* %vdecl_slot1625
-  %bound_ptr1635 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1632, i32 0, i32 0
-  %bound1636 = load i32* %bound_ptr1635
-  call void @oat_array_bounds_check( i32 %bound1636, i32 %lhs_or_call1633 )
-  %elt1634 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1632, i32 0, i32 1, i32 %lhs_or_call1633
-  store i32 0, i32* %elt1634
-  %lhs_or_call1637 = load i32* %vdecl_slot1601
-  %bop1638 = add i32 %lhs_or_call1637, 1
-  store i32 %bop1638, i32* %vdecl_slot1601
+  call void @oat_array_bounds_check( i32 %bound1623, i32 %lhs_or_call1620 )
+  %elt1621 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1619, i32 0, i32 1, i32 %lhs_or_call1620
+  %lhs_or_call1624 = load { i32, [ 0 x i32 ] }** %elt1621
+  %bound_ptr1626 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1624, i32 0, i32 0
+  %bound1627 = load i32* %bound_ptr1626
+  call void @oat_array_bounds_check( i32 %bound1627, i32 1 )
+  %elt1625 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1624, i32 0, i32 1, i32 1
+  %lhs_or_call1628 = load i32* %elt1625
+  %vdecl_slot1629 = alloca i32
+  store i32 %lhs_or_call1628, i32* %vdecl_slot1629
+  %path1630 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1631 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1630
+  %lhs_or_call1632 = load i32* %vdecl_slot1618
+  %bound_ptr1634 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1631, i32 0, i32 0
+  %bound1635 = load i32* %bound_ptr1634
+  call void @oat_array_bounds_check( i32 %bound1635, i32 %lhs_or_call1632 )
+  %elt1633 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1631, i32 0, i32 1, i32 %lhs_or_call1632
+  %lhs_or_call1636 = load { i32, [ 0 x i32 ] }** %elt1633
+  %lhs_or_call1637 = load i32* %vdecl_slot1629
+  %bound_ptr1639 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1636, i32 0, i32 0
+  %bound1640 = load i32* %bound_ptr1639
+  call void @oat_array_bounds_check( i32 %bound1640, i32 %lhs_or_call1637 )
+  %elt1638 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1636, i32 0, i32 1, i32 %lhs_or_call1637
+  store i32 0, i32* %elt1638
+  %lhs_or_call1641 = load i32* %vdecl_slot1605
+  %bop1642 = add i32 %lhs_or_call1641, 1
+  store i32 %bop1642, i32* %vdecl_slot1605
   br label %__cond176
 
-__fresh235:
+__fresh238:
   br label %__post174
 
 __post174:
-  %lhs_or_call1639 = load i32* %k_slot1517
-  %bop1640 = icmp eq i32 %lhs_or_call1639, 106
-  br i1 %bop1640, label %__then179, label %__else178
+  %lhs_or_call1643 = load i32* %k_slot1517
+  %bop1644 = icmp eq i32 %lhs_or_call1643, 106
+  br i1 %bop1644, label %__then179, label %__else178
 
-__fresh236:
+__fresh239:
   br label %__then179
 
 __then179:
-  %path1641 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1642 = load %Shape** %path1641
-  %vtmp1644 = getelementptr %Shape* %lhs_or_call1642, i32 0, i32 0
-  %vtable1643 = load %_Shape_vtable** %vtmp1644
-  %fptmp1645 = getelementptr %_Shape_vtable* %vtable1643, i32 0, i32 3
-  %method1646 = load void (%Shape*)** %fptmp1645
-  call void %method1646( %Shape* %lhs_or_call1642 )
+  %path1645 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1646 = load %Shape** %path1645
+  %vtmp1648 = getelementptr %Shape* %lhs_or_call1646, i32 0, i32 0
+  %vtable1647 = load %_Shape_vtable** %vtmp1648
+  %fptmp1649 = getelementptr %_Shape_vtable* %vtable1647, i32 0, i32 3
+  %method1650 = load void (%Shape*)** %fptmp1649
+  call void %method1650( %Shape* %lhs_or_call1646 )
   br label %__merge177
 
-__fresh237:
+__fresh240:
   br label %__else178
 
 __else178:
   br label %__merge177
 
 __merge177:
-  %lhs_or_call1647 = load i32* %k_slot1517
-  %bop1648 = icmp eq i32 %lhs_or_call1647, 108
-  br i1 %bop1648, label %__then182, label %__else181
+  %lhs_or_call1651 = load i32* %k_slot1517
+  %bop1652 = icmp eq i32 %lhs_or_call1651, 108
+  br i1 %bop1652, label %__then182, label %__else181
 
-__fresh238:
+__fresh241:
   br label %__then182
 
 __then182:
-  %path1649 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1650 = load %Shape** %path1649
-  %vtmp1652 = getelementptr %Shape* %lhs_or_call1650, i32 0, i32 0
-  %vtable1651 = load %_Shape_vtable** %vtmp1652
-  %fptmp1653 = getelementptr %_Shape_vtable* %vtable1651, i32 0, i32 4
-  %method1654 = load void (%Shape*)** %fptmp1653
-  call void %method1654( %Shape* %lhs_or_call1650 )
+  %path1653 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1654 = load %Shape** %path1653
+  %vtmp1656 = getelementptr %Shape* %lhs_or_call1654, i32 0, i32 0
+  %vtable1655 = load %_Shape_vtable** %vtmp1656
+  %fptmp1657 = getelementptr %_Shape_vtable* %vtable1655, i32 0, i32 4
+  %method1658 = load void (%Shape*)** %fptmp1657
+  call void %method1658( %Shape* %lhs_or_call1654 )
   br label %__merge180
 
-__fresh239:
+__fresh242:
   br label %__else181
 
 __else181:
   br label %__merge180
 
 __merge180:
-  %lhs_or_call1655 = load i32* %k_slot1517
-  %bop1656 = icmp eq i32 %lhs_or_call1655, 105
-  br i1 %bop1656, label %__then185, label %__else184
+  %lhs_or_call1659 = load i32* %k_slot1517
+  %bop1660 = icmp eq i32 %lhs_or_call1659, 105
+  br i1 %bop1660, label %__then185, label %__else184
 
-__fresh240:
+__fresh243:
   br label %__then185
 
 __then185:
-  %path1657 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1658 = load %Shape** %path1657
-  %vtmp1660 = getelementptr %Shape* %lhs_or_call1658, i32 0, i32 0
-  %vtable1659 = load %_Shape_vtable** %vtmp1660
-  %fptmp1661 = getelementptr %_Shape_vtable* %vtable1659, i32 0, i32 5
-  %method1662 = load void (%Shape*)** %fptmp1661
-  call void %method1662( %Shape* %lhs_or_call1658 )
+  %path1661 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1662 = load %Shape** %path1661
+  %vtmp1664 = getelementptr %Shape* %lhs_or_call1662, i32 0, i32 0
+  %vtable1663 = load %_Shape_vtable** %vtmp1664
+  %fptmp1665 = getelementptr %_Shape_vtable* %vtable1663, i32 0, i32 5
+  %method1666 = load void (%Shape*)** %fptmp1665
+  call void %method1666( %Shape* %lhs_or_call1662 )
   br label %__merge183
 
-__fresh241:
+__fresh244:
   br label %__else184
 
 __else184:
   br label %__merge183
 
 __merge183:
-  %lhs_or_call1663 = load i32* %k_slot1517
-  %bop1664 = icmp eq i32 %lhs_or_call1663, 104
-  br i1 %bop1664, label %__then188, label %__else187
+  %lhs_or_call1667 = load i32* %k_slot1517
+  %bop1668 = icmp eq i32 %lhs_or_call1667, 107
+  br i1 %bop1668, label %__then188, label %__else187
 
-__fresh242:
+__fresh245:
   br label %__then188
 
 __then188:
-  %path1665 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1666 = load %Shape** %path1665
-  %vtmp1668 = getelementptr %Shape* %lhs_or_call1666, i32 0, i32 0
-  %vtable1667 = load %_Shape_vtable** %vtmp1668
-  %fptmp1669 = getelementptr %_Shape_vtable* %vtable1667, i32 0, i32 6
-  %method1670 = load void (%Shape*)** %fptmp1669
-  call void %method1670( %Shape* %lhs_or_call1666 )
+  %path1669 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1670 = load %Shape** %path1669
+  %vtmp1672 = getelementptr %Shape* %lhs_or_call1670, i32 0, i32 0
+  %vtable1671 = load %_Shape_vtable** %vtmp1672
+  %fptmp1673 = getelementptr %_Shape_vtable* %vtable1671, i32 0, i32 6
+  %method1674 = load void (%Shape*)** %fptmp1673
+  call void %method1674( %Shape* %lhs_or_call1670 )
   br label %__merge186
 
-__fresh243:
+__fresh246:
   br label %__else187
 
 __else187:
   br label %__merge186
 
 __merge186:
-  %path1671 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1672 = load %Shape** %path1671
-  %vtmp1674 = getelementptr %Shape* %lhs_or_call1672, i32 0, i32 0
-  %vtable1673 = load %_Shape_vtable** %vtmp1674
-  %fptmp1675 = getelementptr %_Shape_vtable* %vtable1673, i32 0, i32 2
-  %method1676 = load void (%Shape*)** %fptmp1675
-  call void %method1676( %Shape* %lhs_or_call1672 )
-  %vdecl_slot1677 = alloca i32
-  store i32 0, i32* %vdecl_slot1677
+  %path1675 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1676 = load %Shape** %path1675
+  %vtmp1678 = getelementptr %Shape* %lhs_or_call1676, i32 0, i32 0
+  %vtable1677 = load %_Shape_vtable** %vtmp1678
+  %fptmp1679 = getelementptr %_Shape_vtable* %vtable1677, i32 0, i32 2
+  %method1680 = load void (%Shape*)** %fptmp1679
+  call void %method1680( %Shape* %lhs_or_call1676 )
+  %vdecl_slot1681 = alloca i32
+  store i32 0, i32* %vdecl_slot1681
   br label %__cond191
 
 __cond191:
-  %lhs_or_call1678 = load i32* %vdecl_slot1677
-  %bop1679 = icmp slt i32 %lhs_or_call1678, 4
-  br i1 %bop1679, label %__body190, label %__post189
+  %lhs_or_call1682 = load i32* %vdecl_slot1681
+  %bop1683 = icmp slt i32 %lhs_or_call1682, 4
+  br i1 %bop1683, label %__body190, label %__post189
 
-__fresh244:
+__fresh247:
   br label %__body190
 
 __body190:
-  %path1680 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1681 = load %Shape** %path1680
-  %path1682 = getelementptr %Shape* %lhs_or_call1681, i32 0, i32 2
-  %lhs_or_call1683 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1682
-  %lhs_or_call1684 = load i32* %vdecl_slot1677
-  %bound_ptr1686 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1683, i32 0, i32 0
-  %bound1687 = load i32* %bound_ptr1686
-  call void @oat_array_bounds_check( i32 %bound1687, i32 %lhs_or_call1684 )
-  %elt1685 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1683, i32 0, i32 1, i32 %lhs_or_call1684
-  %lhs_or_call1688 = load { i32, [ 0 x i32 ] }** %elt1685
-  %bound_ptr1690 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1688, i32 0, i32 0
+  %path1684 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1685 = load %Shape** %path1684
+  %path1686 = getelementptr %Shape* %lhs_or_call1685, i32 0, i32 2
+  %lhs_or_call1687 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1686
+  %lhs_or_call1688 = load i32* %vdecl_slot1681
+  %bound_ptr1690 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1687, i32 0, i32 0
   %bound1691 = load i32* %bound_ptr1690
-  call void @oat_array_bounds_check( i32 %bound1691, i32 0 )
-  %elt1689 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1688, i32 0, i32 1, i32 0
-  %lhs_or_call1692 = load i32* %elt1689
-  %vdecl_slot1693 = alloca i32
-  store i32 %lhs_or_call1692, i32* %vdecl_slot1693
-  %path1694 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1695 = load %Shape** %path1694
-  %path1696 = getelementptr %Shape* %lhs_or_call1695, i32 0, i32 2
-  %lhs_or_call1697 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1696
-  %lhs_or_call1698 = load i32* %vdecl_slot1677
-  %bound_ptr1700 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1697, i32 0, i32 0
-  %bound1701 = load i32* %bound_ptr1700
-  call void @oat_array_bounds_check( i32 %bound1701, i32 %lhs_or_call1698 )
-  %elt1699 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1697, i32 0, i32 1, i32 %lhs_or_call1698
-  %lhs_or_call1702 = load { i32, [ 0 x i32 ] }** %elt1699
-  %bound_ptr1704 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1702, i32 0, i32 0
+  call void @oat_array_bounds_check( i32 %bound1691, i32 %lhs_or_call1688 )
+  %elt1689 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1687, i32 0, i32 1, i32 %lhs_or_call1688
+  %lhs_or_call1692 = load { i32, [ 0 x i32 ] }** %elt1689
+  %bound_ptr1694 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1692, i32 0, i32 0
+  %bound1695 = load i32* %bound_ptr1694
+  call void @oat_array_bounds_check( i32 %bound1695, i32 0 )
+  %elt1693 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1692, i32 0, i32 1, i32 0
+  %lhs_or_call1696 = load i32* %elt1693
+  %vdecl_slot1697 = alloca i32
+  store i32 %lhs_or_call1696, i32* %vdecl_slot1697
+  %path1698 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1699 = load %Shape** %path1698
+  %path1700 = getelementptr %Shape* %lhs_or_call1699, i32 0, i32 2
+  %lhs_or_call1701 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1700
+  %lhs_or_call1702 = load i32* %vdecl_slot1681
+  %bound_ptr1704 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1701, i32 0, i32 0
   %bound1705 = load i32* %bound_ptr1704
-  call void @oat_array_bounds_check( i32 %bound1705, i32 1 )
-  %elt1703 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1702, i32 0, i32 1, i32 1
-  %lhs_or_call1706 = load i32* %elt1703
-  %vdecl_slot1707 = alloca i32
-  store i32 %lhs_or_call1706, i32* %vdecl_slot1707
-  %path1708 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1709 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1708
-  %lhs_or_call1710 = load i32* %vdecl_slot1693
-  %bound_ptr1712 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1709, i32 0, i32 0
-  %bound1713 = load i32* %bound_ptr1712
-  call void @oat_array_bounds_check( i32 %bound1713, i32 %lhs_or_call1710 )
-  %elt1711 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1709, i32 0, i32 1, i32 %lhs_or_call1710
-  %lhs_or_call1714 = load { i32, [ 0 x i32 ] }** %elt1711
-  %lhs_or_call1715 = load i32* %vdecl_slot1707
-  %bound_ptr1717 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1714, i32 0, i32 0
-  %bound1718 = load i32* %bound_ptr1717
-  call void @oat_array_bounds_check( i32 %bound1718, i32 %lhs_or_call1715 )
-  %elt1716 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1714, i32 0, i32 1, i32 %lhs_or_call1715
-  %lhs_or_call1719 = load i32* %elt1716
-  %bop1720 = icmp ne i32 %lhs_or_call1719, 0
-  %lhs_or_call1721 = load i32* %vdecl_slot1707
-  %bop1722 = icmp eq i32 %lhs_or_call1721, 49
-  %bop1723 = or i1 %bop1720, %bop1722
-  br i1 %bop1723, label %__then194, label %__else193
+  call void @oat_array_bounds_check( i32 %bound1705, i32 %lhs_or_call1702 )
+  %elt1703 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1701, i32 0, i32 1, i32 %lhs_or_call1702
+  %lhs_or_call1706 = load { i32, [ 0 x i32 ] }** %elt1703
+  %bound_ptr1708 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1706, i32 0, i32 0
+  %bound1709 = load i32* %bound_ptr1708
+  call void @oat_array_bounds_check( i32 %bound1709, i32 1 )
+  %elt1707 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1706, i32 0, i32 1, i32 1
+  %lhs_or_call1710 = load i32* %elt1707
+  %vdecl_slot1711 = alloca i32
+  store i32 %lhs_or_call1710, i32* %vdecl_slot1711
+  %path1712 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1713 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1712
+  %lhs_or_call1714 = load i32* %vdecl_slot1697
+  %bound_ptr1716 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1713, i32 0, i32 0
+  %bound1717 = load i32* %bound_ptr1716
+  call void @oat_array_bounds_check( i32 %bound1717, i32 %lhs_or_call1714 )
+  %elt1715 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1713, i32 0, i32 1, i32 %lhs_or_call1714
+  %lhs_or_call1718 = load { i32, [ 0 x i32 ] }** %elt1715
+  %lhs_or_call1719 = load i32* %vdecl_slot1711
+  %bound_ptr1721 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1718, i32 0, i32 0
+  %bound1722 = load i32* %bound_ptr1721
+  call void @oat_array_bounds_check( i32 %bound1722, i32 %lhs_or_call1719 )
+  %elt1720 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1718, i32 0, i32 1, i32 %lhs_or_call1719
+  %lhs_or_call1723 = load i32* %elt1720
+  %bop1724 = icmp ne i32 %lhs_or_call1723, 0
+  %lhs_or_call1725 = load i32* %vdecl_slot1711
+  %bop1726 = icmp eq i32 %lhs_or_call1725, 49
+  %bop1727 = or i1 %bop1724, %bop1726
+  br i1 %bop1727, label %__then194, label %__else193
 
-__fresh245:
+__fresh248:
   br label %__then194
 
 __then194:
   store i1 1, i1* %vdecl_slot1518
   br label %__merge192
 
-__fresh246:
+__fresh249:
   br label %__else193
 
 __else193:
   br label %__merge192
 
 __merge192:
-  %lhs_or_call1724 = load i32* %vdecl_slot1677
-  %bop1725 = add i32 %lhs_or_call1724, 1
-  store i32 %bop1725, i32* %vdecl_slot1677
+  %lhs_or_call1728 = load i32* %vdecl_slot1681
+  %bop1729 = add i32 %lhs_or_call1728, 1
+  store i32 %bop1729, i32* %vdecl_slot1681
   br label %__cond191
 
-__fresh247:
+__fresh250:
   br label %__post189
 
 __post189:
-  %lhs_or_call1726 = load i1* %vdecl_slot1518
-  br i1 %lhs_or_call1726, label %__then230, label %__else229
+  %lhs_or_call1730 = load i1* %vdecl_slot1518
+  br i1 %lhs_or_call1730, label %__then233, label %__else232
 
-__fresh248:
-  br label %__then230
+__fresh251:
+  br label %__then233
 
-__then230:
-  %vtmp1728 = getelementptr %State* %_this1, i32 0, i32 0
-  %vtable1727 = load %_State_vtable** %vtmp1728
-  %fptmp1729 = getelementptr %_State_vtable* %vtable1727, i32 0, i32 2
-  %method1730 = load void (%State*)** %fptmp1729
-  call void %method1730( %State* %_this1 )
-  %vdecl_slot1731 = alloca i32
-  store i32 0, i32* %vdecl_slot1731
+__then233:
+  %vtmp1732 = getelementptr %State* %_this1, i32 0, i32 0
+  %vtable1731 = load %_State_vtable** %vtmp1732
+  %fptmp1733 = getelementptr %_State_vtable* %vtable1731, i32 0, i32 2
+  %method1734 = load void (%State*)** %fptmp1733
+  call void %method1734( %State* %_this1 )
+  %vdecl_slot1735 = alloca i32
+  store i32 0, i32* %vdecl_slot1735
   br label %__cond197
 
 __cond197:
-  %lhs_or_call1732 = load i32* %vdecl_slot1731
-  %bop1733 = icmp slt i32 %lhs_or_call1732, 4
-  br i1 %bop1733, label %__body196, label %__post195
+  %lhs_or_call1736 = load i32* %vdecl_slot1735
+  %bop1737 = icmp slt i32 %lhs_or_call1736, 4
+  br i1 %bop1737, label %__body196, label %__post195
 
-__fresh249:
+__fresh252:
   br label %__body196
 
 __body196:
-  %lhs_or_call1734 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1546
-  %lhs_or_call1735 = load i32* %vdecl_slot1731
-  %bound_ptr1737 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1734, i32 0, i32 0
-  %bound1738 = load i32* %bound_ptr1737
-  call void @oat_array_bounds_check( i32 %bound1738, i32 %lhs_or_call1735 )
-  %elt1736 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1734, i32 0, i32 1, i32 %lhs_or_call1735
-  %lhs_or_call1739 = load { i32, [ 0 x i32 ] }** %elt1736
-  %bound_ptr1741 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1739, i32 0, i32 0
+  %lhs_or_call1738 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1550
+  %lhs_or_call1739 = load i32* %vdecl_slot1735
+  %bound_ptr1741 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1738, i32 0, i32 0
   %bound1742 = load i32* %bound_ptr1741
-  call void @oat_array_bounds_check( i32 %bound1742, i32 0 )
-  %elt1740 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1739, i32 0, i32 1, i32 0
-  %lhs_or_call1743 = load i32* %elt1740
-  %vdecl_slot1744 = alloca i32
-  store i32 %lhs_or_call1743, i32* %vdecl_slot1744
-  %lhs_or_call1745 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1546
-  %lhs_or_call1746 = load i32* %vdecl_slot1731
-  %bound_ptr1748 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1745, i32 0, i32 0
-  %bound1749 = load i32* %bound_ptr1748
-  call void @oat_array_bounds_check( i32 %bound1749, i32 %lhs_or_call1746 )
-  %elt1747 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1745, i32 0, i32 1, i32 %lhs_or_call1746
-  %lhs_or_call1750 = load { i32, [ 0 x i32 ] }** %elt1747
-  %bound_ptr1752 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1750, i32 0, i32 0
+  call void @oat_array_bounds_check( i32 %bound1742, i32 %lhs_or_call1739 )
+  %elt1740 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1738, i32 0, i32 1, i32 %lhs_or_call1739
+  %lhs_or_call1743 = load { i32, [ 0 x i32 ] }** %elt1740
+  %bound_ptr1745 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1743, i32 0, i32 0
+  %bound1746 = load i32* %bound_ptr1745
+  call void @oat_array_bounds_check( i32 %bound1746, i32 0 )
+  %elt1744 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1743, i32 0, i32 1, i32 0
+  %lhs_or_call1747 = load i32* %elt1744
+  %vdecl_slot1748 = alloca i32
+  store i32 %lhs_or_call1747, i32* %vdecl_slot1748
+  %lhs_or_call1749 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %vdecl_slot1550
+  %lhs_or_call1750 = load i32* %vdecl_slot1735
+  %bound_ptr1752 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1749, i32 0, i32 0
   %bound1753 = load i32* %bound_ptr1752
-  call void @oat_array_bounds_check( i32 %bound1753, i32 1 )
-  %elt1751 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1750, i32 0, i32 1, i32 1
-  %lhs_or_call1754 = load i32* %elt1751
-  %vdecl_slot1755 = alloca i32
-  store i32 %lhs_or_call1754, i32* %vdecl_slot1755
-  %path1756 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1757 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1756
-  %lhs_or_call1758 = load i32* %vdecl_slot1744
-  %bound_ptr1760 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1757, i32 0, i32 0
-  %bound1761 = load i32* %bound_ptr1760
-  call void @oat_array_bounds_check( i32 %bound1761, i32 %lhs_or_call1758 )
-  %elt1759 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1757, i32 0, i32 1, i32 %lhs_or_call1758
-  %lhs_or_call1762 = load { i32, [ 0 x i32 ] }** %elt1759
-  %lhs_or_call1763 = load i32* %vdecl_slot1755
-  %bound_ptr1765 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1762, i32 0, i32 0
-  %bound1766 = load i32* %bound_ptr1765
-  call void @oat_array_bounds_check( i32 %bound1766, i32 %lhs_or_call1763 )
-  %elt1764 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1762, i32 0, i32 1, i32 %lhs_or_call1763
-  %lhs_or_call1767 = load i32* %vdecl_slot1551
-  store i32 %lhs_or_call1767, i32* %elt1764
-  %lhs_or_call1768 = load i32* %vdecl_slot1731
-  %bop1769 = add i32 %lhs_or_call1768, 1
-  store i32 %bop1769, i32* %vdecl_slot1731
+  call void @oat_array_bounds_check( i32 %bound1753, i32 %lhs_or_call1750 )
+  %elt1751 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1749, i32 0, i32 1, i32 %lhs_or_call1750
+  %lhs_or_call1754 = load { i32, [ 0 x i32 ] }** %elt1751
+  %bound_ptr1756 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1754, i32 0, i32 0
+  %bound1757 = load i32* %bound_ptr1756
+  call void @oat_array_bounds_check( i32 %bound1757, i32 1 )
+  %elt1755 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1754, i32 0, i32 1, i32 1
+  %lhs_or_call1758 = load i32* %elt1755
+  %vdecl_slot1759 = alloca i32
+  store i32 %lhs_or_call1758, i32* %vdecl_slot1759
+  %path1760 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1761 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1760
+  %lhs_or_call1762 = load i32* %vdecl_slot1748
+  %bound_ptr1764 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1761, i32 0, i32 0
+  %bound1765 = load i32* %bound_ptr1764
+  call void @oat_array_bounds_check( i32 %bound1765, i32 %lhs_or_call1762 )
+  %elt1763 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1761, i32 0, i32 1, i32 %lhs_or_call1762
+  %lhs_or_call1766 = load { i32, [ 0 x i32 ] }** %elt1763
+  %lhs_or_call1767 = load i32* %vdecl_slot1759
+  %bound_ptr1769 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1766, i32 0, i32 0
+  %bound1770 = load i32* %bound_ptr1769
+  call void @oat_array_bounds_check( i32 %bound1770, i32 %lhs_or_call1767 )
+  %elt1768 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1766, i32 0, i32 1, i32 %lhs_or_call1767
+  %lhs_or_call1771 = load i32* %vdecl_slot1555
+  store i32 %lhs_or_call1771, i32* %elt1768
+  %lhs_or_call1772 = load i32* %vdecl_slot1735
+  %bop1773 = add i32 %lhs_or_call1772, 1
+  store i32 %bop1773, i32* %vdecl_slot1735
   br label %__cond197
 
-__fresh250:
+__fresh253:
   br label %__post195
 
 __post195:
-  %vdecl_slot1770 = alloca i32
-  store i32 0, i32* %vdecl_slot1770
+  %vdecl_slot1774 = alloca i32
+  store i32 0, i32* %vdecl_slot1774
   br label %__cond200
 
 __cond200:
-  %lhs_or_call1771 = load i32* %vdecl_slot1770
-  %bop1772 = icmp slt i32 %lhs_or_call1771, 50
-  br i1 %bop1772, label %__body199, label %__post198
+  %lhs_or_call1775 = load i32* %vdecl_slot1774
+  %bop1776 = icmp slt i32 %lhs_or_call1775, 50
+  br i1 %bop1776, label %__body199, label %__post198
 
-__fresh251:
+__fresh254:
   br label %__body199
 
 __body199:
-  %vdecl_slot1773 = alloca i1
-  store i1 1, i1* %vdecl_slot1773
-  %vdecl_slot1774 = alloca i32
-  store i32 0, i32* %vdecl_slot1774
+  %vdecl_slot1777 = alloca i1
+  store i1 1, i1* %vdecl_slot1777
+  %vdecl_slot1778 = alloca i32
+  store i32 0, i32* %vdecl_slot1778
   br label %__cond203
 
 __cond203:
-  %lhs_or_call1775 = load i32* %vdecl_slot1774
-  %bop1776 = icmp slt i32 %lhs_or_call1775, 10
-  br i1 %bop1776, label %__body202, label %__post201
+  %lhs_or_call1779 = load i32* %vdecl_slot1778
+  %bop1780 = icmp slt i32 %lhs_or_call1779, 10
+  br i1 %bop1780, label %__body202, label %__post201
 
-__fresh252:
+__fresh255:
   br label %__body202
 
 __body202:
-  %path1777 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1778 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1777
-  %lhs_or_call1779 = load i32* %vdecl_slot1774
-  %bound_ptr1781 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1778, i32 0, i32 0
-  %bound1782 = load i32* %bound_ptr1781
-  call void @oat_array_bounds_check( i32 %bound1782, i32 %lhs_or_call1779 )
-  %elt1780 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1778, i32 0, i32 1, i32 %lhs_or_call1779
-  %lhs_or_call1783 = load { i32, [ 0 x i32 ] }** %elt1780
-  %lhs_or_call1784 = load i32* %vdecl_slot1770
-  %bound_ptr1786 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1783, i32 0, i32 0
-  %bound1787 = load i32* %bound_ptr1786
-  call void @oat_array_bounds_check( i32 %bound1787, i32 %lhs_or_call1784 )
-  %elt1785 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1783, i32 0, i32 1, i32 %lhs_or_call1784
-  %lhs_or_call1788 = load i32* %elt1785
-  %bop1789 = icmp eq i32 %lhs_or_call1788, 0
-  br i1 %bop1789, label %__then206, label %__else205
+  %path1781 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1782 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1781
+  %lhs_or_call1783 = load i32* %vdecl_slot1778
+  %bound_ptr1785 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1782, i32 0, i32 0
+  %bound1786 = load i32* %bound_ptr1785
+  call void @oat_array_bounds_check( i32 %bound1786, i32 %lhs_or_call1783 )
+  %elt1784 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1782, i32 0, i32 1, i32 %lhs_or_call1783
+  %lhs_or_call1787 = load { i32, [ 0 x i32 ] }** %elt1784
+  %lhs_or_call1788 = load i32* %vdecl_slot1774
+  %bound_ptr1790 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1787, i32 0, i32 0
+  %bound1791 = load i32* %bound_ptr1790
+  call void @oat_array_bounds_check( i32 %bound1791, i32 %lhs_or_call1788 )
+  %elt1789 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1787, i32 0, i32 1, i32 %lhs_or_call1788
+  %lhs_or_call1792 = load i32* %elt1789
+  %bop1793 = icmp eq i32 %lhs_or_call1792, 0
+  br i1 %bop1793, label %__then206, label %__else205
 
-__fresh253:
+__fresh256:
   br label %__then206
 
 __then206:
-  store i1 0, i1* %vdecl_slot1773
+  store i1 0, i1* %vdecl_slot1777
   br label %__merge204
 
-__fresh254:
+__fresh257:
   br label %__else205
 
 __else205:
   br label %__merge204
 
 __merge204:
-  %lhs_or_call1790 = load i32* %vdecl_slot1774
-  %bop1791 = add i32 %lhs_or_call1790, 1
-  store i32 %bop1791, i32* %vdecl_slot1774
+  %lhs_or_call1794 = load i32* %vdecl_slot1778
+  %bop1795 = add i32 %lhs_or_call1794, 1
+  store i32 %bop1795, i32* %vdecl_slot1778
   br label %__cond203
 
-__fresh255:
+__fresh258:
   br label %__post201
 
 __post201:
-  %lhs_or_call1792 = load i1* %vdecl_slot1773
-  br i1 %lhs_or_call1792, label %__then218, label %__else217
+  %lhs_or_call1796 = load i1* %vdecl_slot1777
+  br i1 %lhs_or_call1796, label %__then221, label %__else220
 
-__fresh256:
-  br label %__then218
+__fresh259:
+  br label %__then221
 
-__then218:
-  %lhs_or_call1793 = load { i32, [ 0 x i1 ] }** %vdecl_slot1523
-  %bound_ptr1795 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1793, i32 0, i32 0
-  %bound1796 = load i32* %bound_ptr1795
-  call void @oat_array_bounds_check( i32 %bound1796, i32 1 )
-  %elt1794 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1793, i32 0, i32 1, i32 1
-  store i1 1, i1* %elt1794
-  %lhs_or_call1797 = load i32* %vdecl_slot1770
-  %vdecl_slot1798 = alloca i32
-  store i32 %lhs_or_call1797, i32* %vdecl_slot1798
-  br label %__cond209
+__then221:
+  %lhs_or_call1797 = load i32* %vdecl_slot1527
+  %bop1798 = icmp sle i32 %lhs_or_call1797, 4
+  br i1 %bop1798, label %__then209, label %__else208
 
-__cond209:
-  %lhs_or_call1799 = load i32* %vdecl_slot1798
-  %bop1800 = icmp sgt i32 %lhs_or_call1799, 0
-  br i1 %bop1800, label %__body208, label %__post207
+__fresh260:
+  br label %__then209
 
-__fresh257:
-  br label %__body208
+__then209:
+  %lhs_or_call1799 = load { i32, [ 0 x i1 ] }** %vdecl_slot1526
+  %lhs_or_call1800 = load i32* %vdecl_slot1527
+  %bound_ptr1802 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1799, i32 0, i32 0
+  %bound1803 = load i32* %bound_ptr1802
+  call void @oat_array_bounds_check( i32 %bound1803, i32 %lhs_or_call1800 )
+  %elt1801 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1799, i32 0, i32 1, i32 %lhs_or_call1800
+  store i1 1, i1* %elt1801
+  %lhs_or_call1804 = load i32* %vdecl_slot1527
+  %bop1805 = add i32 %lhs_or_call1804, 1
+  store i32 %bop1805, i32* %vdecl_slot1527
+  br label %__merge207
 
-__body208:
-  %vdecl_slot1801 = alloca i32
-  store i32 0, i32* %vdecl_slot1801
+__fresh261:
+  br label %__else208
+
+__else208:
+  br label %__merge207
+
+__merge207:
+  %lhs_or_call1806 = load i32* %vdecl_slot1774
+  %vdecl_slot1807 = alloca i32
+  store i32 %lhs_or_call1806, i32* %vdecl_slot1807
   br label %__cond212
 
 __cond212:
-  %lhs_or_call1802 = load i32* %vdecl_slot1801
-  %bop1803 = icmp slt i32 %lhs_or_call1802, 10
-  br i1 %bop1803, label %__body211, label %__post210
+  %lhs_or_call1808 = load i32* %vdecl_slot1807
+  %bop1809 = icmp sgt i32 %lhs_or_call1808, 0
+  br i1 %bop1809, label %__body211, label %__post210
 
-__fresh258:
+__fresh262:
   br label %__body211
 
 __body211:
-  %path1804 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1805 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1804
-  %lhs_or_call1806 = load i32* %vdecl_slot1801
-  %bound_ptr1808 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1805, i32 0, i32 0
-  %bound1809 = load i32* %bound_ptr1808
-  call void @oat_array_bounds_check( i32 %bound1809, i32 %lhs_or_call1806 )
-  %elt1807 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1805, i32 0, i32 1, i32 %lhs_or_call1806
-  %lhs_or_call1810 = load { i32, [ 0 x i32 ] }** %elt1807
-  %lhs_or_call1811 = load i32* %vdecl_slot1798
-  %bound_ptr1813 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1810, i32 0, i32 0
-  %bound1814 = load i32* %bound_ptr1813
-  call void @oat_array_bounds_check( i32 %bound1814, i32 %lhs_or_call1811 )
-  %elt1812 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1810, i32 0, i32 1, i32 %lhs_or_call1811
-  %path1815 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1816 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1815
-  %lhs_or_call1817 = load i32* %vdecl_slot1801
-  %bound_ptr1819 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1816, i32 0, i32 0
-  %bound1820 = load i32* %bound_ptr1819
-  call void @oat_array_bounds_check( i32 %bound1820, i32 %lhs_or_call1817 )
-  %elt1818 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1816, i32 0, i32 1, i32 %lhs_or_call1817
-  %lhs_or_call1821 = load { i32, [ 0 x i32 ] }** %elt1818
-  %lhs_or_call1822 = load i32* %vdecl_slot1798
-  %bop1823 = sub i32 %lhs_or_call1822, 1
-  %bound_ptr1825 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1821, i32 0, i32 0
-  %bound1826 = load i32* %bound_ptr1825
-  call void @oat_array_bounds_check( i32 %bound1826, i32 %bop1823 )
-  %elt1824 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1821, i32 0, i32 1, i32 %bop1823
-  %lhs_or_call1827 = load i32* %elt1824
-  store i32 %lhs_or_call1827, i32* %elt1812
-  %lhs_or_call1828 = load i32* %vdecl_slot1801
-  %bop1829 = add i32 %lhs_or_call1828, 1
-  store i32 %bop1829, i32* %vdecl_slot1801
-  br label %__cond212
-
-__fresh259:
-  br label %__post210
-
-__post210:
-  %lhs_or_call1830 = load i32* %vdecl_slot1798
-  %bop1831 = sub i32 %lhs_or_call1830, 1
-  store i32 %bop1831, i32* %vdecl_slot1798
-  br label %__cond209
-
-__fresh260:
-  br label %__post207
-
-__post207:
-  %vdecl_slot1832 = alloca i32
-  store i32 0, i32* %vdecl_slot1832
+  %vdecl_slot1810 = alloca i32
+  store i32 0, i32* %vdecl_slot1810
   br label %__cond215
 
 __cond215:
-  %lhs_or_call1833 = load i32* %vdecl_slot1832
-  %bop1834 = icmp slt i32 %lhs_or_call1833, 10
-  br i1 %bop1834, label %__body214, label %__post213
+  %lhs_or_call1811 = load i32* %vdecl_slot1810
+  %bop1812 = icmp slt i32 %lhs_or_call1811, 10
+  br i1 %bop1812, label %__body214, label %__post213
 
-__fresh261:
+__fresh263:
   br label %__body214
 
 __body214:
-  %path1835 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1836 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1835
-  %lhs_or_call1837 = load i32* %vdecl_slot1832
-  %bound_ptr1839 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1836, i32 0, i32 0
-  %bound1840 = load i32* %bound_ptr1839
-  call void @oat_array_bounds_check( i32 %bound1840, i32 %lhs_or_call1837 )
-  %elt1838 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1836, i32 0, i32 1, i32 %lhs_or_call1837
-  %lhs_or_call1841 = load { i32, [ 0 x i32 ] }** %elt1838
-  %bound_ptr1843 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1841, i32 0, i32 0
-  %bound1844 = load i32* %bound_ptr1843
-  call void @oat_array_bounds_check( i32 %bound1844, i32 0 )
-  %elt1842 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1841, i32 0, i32 1, i32 0
-  store i32 0, i32* %elt1842
-  %lhs_or_call1845 = load i32* %vdecl_slot1832
-  %bop1846 = add i32 %lhs_or_call1845, 1
-  store i32 %bop1846, i32* %vdecl_slot1832
+  %path1813 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1814 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1813
+  %lhs_or_call1815 = load i32* %vdecl_slot1810
+  %bound_ptr1817 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1814, i32 0, i32 0
+  %bound1818 = load i32* %bound_ptr1817
+  call void @oat_array_bounds_check( i32 %bound1818, i32 %lhs_or_call1815 )
+  %elt1816 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1814, i32 0, i32 1, i32 %lhs_or_call1815
+  %lhs_or_call1819 = load { i32, [ 0 x i32 ] }** %elt1816
+  %lhs_or_call1820 = load i32* %vdecl_slot1807
+  %bound_ptr1822 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1819, i32 0, i32 0
+  %bound1823 = load i32* %bound_ptr1822
+  call void @oat_array_bounds_check( i32 %bound1823, i32 %lhs_or_call1820 )
+  %elt1821 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1819, i32 0, i32 1, i32 %lhs_or_call1820
+  %path1824 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1825 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1824
+  %lhs_or_call1826 = load i32* %vdecl_slot1810
+  %bound_ptr1828 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1825, i32 0, i32 0
+  %bound1829 = load i32* %bound_ptr1828
+  call void @oat_array_bounds_check( i32 %bound1829, i32 %lhs_or_call1826 )
+  %elt1827 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1825, i32 0, i32 1, i32 %lhs_or_call1826
+  %lhs_or_call1830 = load { i32, [ 0 x i32 ] }** %elt1827
+  %lhs_or_call1831 = load i32* %vdecl_slot1807
+  %bop1832 = sub i32 %lhs_or_call1831, 1
+  %bound_ptr1834 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1830, i32 0, i32 0
+  %bound1835 = load i32* %bound_ptr1834
+  call void @oat_array_bounds_check( i32 %bound1835, i32 %bop1832 )
+  %elt1833 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1830, i32 0, i32 1, i32 %bop1832
+  %lhs_or_call1836 = load i32* %elt1833
+  store i32 %lhs_or_call1836, i32* %elt1821
+  %lhs_or_call1837 = load i32* %vdecl_slot1810
+  %bop1838 = add i32 %lhs_or_call1837, 1
+  store i32 %bop1838, i32* %vdecl_slot1810
   br label %__cond215
 
-__fresh262:
+__fresh264:
   br label %__post213
 
 __post213:
-  br label %__merge216
+  %lhs_or_call1839 = load i32* %vdecl_slot1807
+  %bop1840 = sub i32 %lhs_or_call1839, 1
+  store i32 %bop1840, i32* %vdecl_slot1807
+  br label %__cond212
 
-__fresh263:
-  br label %__else217
+__fresh265:
+  br label %__post210
 
-__else217:
-  br label %__merge216
+__post210:
+  %vdecl_slot1841 = alloca i32
+  store i32 0, i32* %vdecl_slot1841
+  br label %__cond218
 
-__merge216:
-  %lhs_or_call1847 = load i32* %vdecl_slot1770
-  %bop1848 = add i32 %lhs_or_call1847, 1
-  store i32 %bop1848, i32* %vdecl_slot1770
+__cond218:
+  %lhs_or_call1842 = load i32* %vdecl_slot1841
+  %bop1843 = icmp slt i32 %lhs_or_call1842, 10
+  br i1 %bop1843, label %__body217, label %__post216
+
+__fresh266:
+  br label %__body217
+
+__body217:
+  %path1844 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1845 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1844
+  %lhs_or_call1846 = load i32* %vdecl_slot1841
+  %bound_ptr1848 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1845, i32 0, i32 0
+  %bound1849 = load i32* %bound_ptr1848
+  call void @oat_array_bounds_check( i32 %bound1849, i32 %lhs_or_call1846 )
+  %elt1847 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1845, i32 0, i32 1, i32 %lhs_or_call1846
+  %lhs_or_call1850 = load { i32, [ 0 x i32 ] }** %elt1847
+  %bound_ptr1852 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1850, i32 0, i32 0
+  %bound1853 = load i32* %bound_ptr1852
+  call void @oat_array_bounds_check( i32 %bound1853, i32 0 )
+  %elt1851 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1850, i32 0, i32 1, i32 0
+  store i32 0, i32* %elt1851
+  %lhs_or_call1854 = load i32* %vdecl_slot1841
+  %bop1855 = add i32 %lhs_or_call1854, 1
+  store i32 %bop1855, i32* %vdecl_slot1841
+  br label %__cond218
+
+__fresh267:
+  br label %__post216
+
+__post216:
+  br label %__merge219
+
+__fresh268:
+  br label %__else220
+
+__else220:
+  br label %__merge219
+
+__merge219:
+  %lhs_or_call1856 = load i32* %vdecl_slot1774
+  %bop1857 = add i32 %lhs_or_call1856, 1
+  store i32 %bop1857, i32* %vdecl_slot1774
   br label %__cond200
 
-__fresh264:
+__fresh269:
   br label %__post198
 
 __post198:
-  %vdecl_slot1849 = alloca i32
-  store i32 0, i32* %vdecl_slot1849
-  br label %__cond221
+  %vdecl_slot1858 = alloca i32
+  store i32 0, i32* %vdecl_slot1858
+  br label %__cond224
 
-__cond221:
-  %lhs_or_call1850 = load i32* %vdecl_slot1849
-  %bop1851 = icmp slt i32 %lhs_or_call1850, 10
-  br i1 %bop1851, label %__body220, label %__post219
-
-__fresh265:
-  br label %__body220
-
-__body220:
-  %path1852 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1853 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1852
-  %lhs_or_call1854 = load i32* %vdecl_slot1849
-  %bound_ptr1856 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1853, i32 0, i32 0
-  %bound1857 = load i32* %bound_ptr1856
-  call void @oat_array_bounds_check( i32 %bound1857, i32 %lhs_or_call1854 )
-  %elt1855 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1853, i32 0, i32 1, i32 %lhs_or_call1854
-  %lhs_or_call1858 = load { i32, [ 0 x i32 ] }** %elt1855
-  %bound_ptr1860 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1858, i32 0, i32 0
-  %bound1861 = load i32* %bound_ptr1860
-  call void @oat_array_bounds_check( i32 %bound1861, i32 0 )
-  %elt1859 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1858, i32 0, i32 1, i32 0
-  %lhs_or_call1862 = load i32* %elt1859
-  %bop1863 = icmp ne i32 %lhs_or_call1862, 0
-  br i1 %bop1863, label %__then224, label %__else223
-
-__fresh266:
-  br label %__then224
-
-__then224:
-  %lhs_or_call1864 = load { i32, [ 0 x i1 ] }** %vdecl_slot1523
-  %bound_ptr1866 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1864, i32 0, i32 0
-  %bound1867 = load i32* %bound_ptr1866
-  call void @oat_array_bounds_check( i32 %bound1867, i32 0 )
-  %elt1865 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1864, i32 0, i32 1, i32 0
-  store i1 1, i1* %elt1865
-  br label %__merge222
-
-__fresh267:
-  br label %__else223
-
-__else223:
-  br label %__merge222
-
-__merge222:
-  %lhs_or_call1868 = load i32* %vdecl_slot1849
-  %bop1869 = add i32 %lhs_or_call1868, 1
-  store i32 %bop1869, i32* %vdecl_slot1849
-  br label %__cond221
-
-__fresh268:
-  br label %__post219
-
-__post219:
-  br label %__merge228
-
-__fresh269:
-  br label %__else229
-
-__else229:
-  %vdecl_slot1870 = alloca i32
-  store i32 0, i32* %vdecl_slot1870
-  br label %__cond227
-
-__cond227:
-  %lhs_or_call1871 = load i32* %vdecl_slot1870
-  %bop1872 = icmp slt i32 %lhs_or_call1871, 4
-  br i1 %bop1872, label %__body226, label %__post225
+__cond224:
+  %lhs_or_call1859 = load i32* %vdecl_slot1858
+  %bop1860 = icmp slt i32 %lhs_or_call1859, 10
+  br i1 %bop1860, label %__body223, label %__post222
 
 __fresh270:
-  br label %__body226
+  br label %__body223
 
-__body226:
-  %path1873 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1874 = load %Shape** %path1873
-  %path1875 = getelementptr %Shape* %lhs_or_call1874, i32 0, i32 2
-  %lhs_or_call1876 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1875
-  %lhs_or_call1877 = load i32* %vdecl_slot1870
-  %bound_ptr1879 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1876, i32 0, i32 0
-  %bound1880 = load i32* %bound_ptr1879
-  call void @oat_array_bounds_check( i32 %bound1880, i32 %lhs_or_call1877 )
-  %elt1878 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1876, i32 0, i32 1, i32 %lhs_or_call1877
-  %lhs_or_call1881 = load { i32, [ 0 x i32 ] }** %elt1878
-  %bound_ptr1883 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1881, i32 0, i32 0
-  %bound1884 = load i32* %bound_ptr1883
-  call void @oat_array_bounds_check( i32 %bound1884, i32 0 )
-  %elt1882 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1881, i32 0, i32 1, i32 0
-  %lhs_or_call1885 = load i32* %elt1882
-  %vdecl_slot1886 = alloca i32
-  store i32 %lhs_or_call1885, i32* %vdecl_slot1886
-  %path1887 = getelementptr %State* %_this1, i32 0, i32 2
-  %lhs_or_call1888 = load %Shape** %path1887
-  %path1889 = getelementptr %Shape* %lhs_or_call1888, i32 0, i32 2
-  %lhs_or_call1890 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1889
-  %lhs_or_call1891 = load i32* %vdecl_slot1870
-  %bound_ptr1893 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1890, i32 0, i32 0
-  %bound1894 = load i32* %bound_ptr1893
-  call void @oat_array_bounds_check( i32 %bound1894, i32 %lhs_or_call1891 )
-  %elt1892 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1890, i32 0, i32 1, i32 %lhs_or_call1891
-  %lhs_or_call1895 = load { i32, [ 0 x i32 ] }** %elt1892
-  %bound_ptr1897 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1895, i32 0, i32 0
-  %bound1898 = load i32* %bound_ptr1897
-  call void @oat_array_bounds_check( i32 %bound1898, i32 1 )
-  %elt1896 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1895, i32 0, i32 1, i32 1
-  %lhs_or_call1899 = load i32* %elt1896
-  %vdecl_slot1900 = alloca i32
-  store i32 %lhs_or_call1899, i32* %vdecl_slot1900
-  %path1901 = getelementptr %State* %_this1, i32 0, i32 4
-  %lhs_or_call1902 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1901
-  %lhs_or_call1903 = load i32* %vdecl_slot1886
-  %bound_ptr1905 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1902, i32 0, i32 0
-  %bound1906 = load i32* %bound_ptr1905
-  call void @oat_array_bounds_check( i32 %bound1906, i32 %lhs_or_call1903 )
-  %elt1904 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1902, i32 0, i32 1, i32 %lhs_or_call1903
-  %lhs_or_call1907 = load { i32, [ 0 x i32 ] }** %elt1904
-  %lhs_or_call1908 = load i32* %vdecl_slot1900
-  %bound_ptr1910 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1907, i32 0, i32 0
-  %bound1911 = load i32* %bound_ptr1910
-  call void @oat_array_bounds_check( i32 %bound1911, i32 %lhs_or_call1908 )
-  %elt1909 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1907, i32 0, i32 1, i32 %lhs_or_call1908
-  %lhs_or_call1912 = load i32* %vdecl_slot1551
-  store i32 %lhs_or_call1912, i32* %elt1909
-  %lhs_or_call1913 = load i32* %vdecl_slot1870
-  %bop1914 = add i32 %lhs_or_call1913, 1
-  store i32 %bop1914, i32* %vdecl_slot1870
-  br label %__cond227
+__body223:
+  %path1861 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1862 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1861
+  %lhs_or_call1863 = load i32* %vdecl_slot1858
+  %bound_ptr1865 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1862, i32 0, i32 0
+  %bound1866 = load i32* %bound_ptr1865
+  call void @oat_array_bounds_check( i32 %bound1866, i32 %lhs_or_call1863 )
+  %elt1864 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1862, i32 0, i32 1, i32 %lhs_or_call1863
+  %lhs_or_call1867 = load { i32, [ 0 x i32 ] }** %elt1864
+  %bound_ptr1869 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1867, i32 0, i32 0
+  %bound1870 = load i32* %bound_ptr1869
+  call void @oat_array_bounds_check( i32 %bound1870, i32 0 )
+  %elt1868 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1867, i32 0, i32 1, i32 0
+  %lhs_or_call1871 = load i32* %elt1868
+  %bop1872 = icmp ne i32 %lhs_or_call1871, 0
+  br i1 %bop1872, label %__then227, label %__else226
 
 __fresh271:
-  br label %__post225
+  br label %__then227
 
-__post225:
-  br label %__merge228
+__then227:
+  %lhs_or_call1873 = load { i32, [ 0 x i1 ] }** %vdecl_slot1526
+  %bound_ptr1875 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1873, i32 0, i32 0
+  %bound1876 = load i32* %bound_ptr1875
+  call void @oat_array_bounds_check( i32 %bound1876, i32 0 )
+  %elt1874 = getelementptr { i32, [ 0 x i1 ] }* %lhs_or_call1873, i32 0, i32 1, i32 0
+  store i1 1, i1* %elt1874
+  br label %__merge225
 
-__merge228:
-  %lhs_or_call1915 = load { i32, [ 0 x i1 ] }** %vdecl_slot1523
-  ret { i32, [ 0 x i1 ] }* %lhs_or_call1915
+__fresh272:
+  br label %__else226
+
+__else226:
+  br label %__merge225
+
+__merge225:
+  %lhs_or_call1877 = load i32* %vdecl_slot1858
+  %bop1878 = add i32 %lhs_or_call1877, 1
+  store i32 %bop1878, i32* %vdecl_slot1858
+  br label %__cond224
+
+__fresh273:
+  br label %__post222
+
+__post222:
+  br label %__merge231
+
+__fresh274:
+  br label %__else232
+
+__else232:
+  %vdecl_slot1879 = alloca i32
+  store i32 0, i32* %vdecl_slot1879
+  br label %__cond230
+
+__cond230:
+  %lhs_or_call1880 = load i32* %vdecl_slot1879
+  %bop1881 = icmp slt i32 %lhs_or_call1880, 4
+  br i1 %bop1881, label %__body229, label %__post228
+
+__fresh275:
+  br label %__body229
+
+__body229:
+  %path1882 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1883 = load %Shape** %path1882
+  %path1884 = getelementptr %Shape* %lhs_or_call1883, i32 0, i32 2
+  %lhs_or_call1885 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1884
+  %lhs_or_call1886 = load i32* %vdecl_slot1879
+  %bound_ptr1888 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1885, i32 0, i32 0
+  %bound1889 = load i32* %bound_ptr1888
+  call void @oat_array_bounds_check( i32 %bound1889, i32 %lhs_or_call1886 )
+  %elt1887 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1885, i32 0, i32 1, i32 %lhs_or_call1886
+  %lhs_or_call1890 = load { i32, [ 0 x i32 ] }** %elt1887
+  %bound_ptr1892 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1890, i32 0, i32 0
+  %bound1893 = load i32* %bound_ptr1892
+  call void @oat_array_bounds_check( i32 %bound1893, i32 0 )
+  %elt1891 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1890, i32 0, i32 1, i32 0
+  %lhs_or_call1894 = load i32* %elt1891
+  %vdecl_slot1895 = alloca i32
+  store i32 %lhs_or_call1894, i32* %vdecl_slot1895
+  %path1896 = getelementptr %State* %_this1, i32 0, i32 2
+  %lhs_or_call1897 = load %Shape** %path1896
+  %path1898 = getelementptr %Shape* %lhs_or_call1897, i32 0, i32 2
+  %lhs_or_call1899 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1898
+  %lhs_or_call1900 = load i32* %vdecl_slot1879
+  %bound_ptr1902 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1899, i32 0, i32 0
+  %bound1903 = load i32* %bound_ptr1902
+  call void @oat_array_bounds_check( i32 %bound1903, i32 %lhs_or_call1900 )
+  %elt1901 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1899, i32 0, i32 1, i32 %lhs_or_call1900
+  %lhs_or_call1904 = load { i32, [ 0 x i32 ] }** %elt1901
+  %bound_ptr1906 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1904, i32 0, i32 0
+  %bound1907 = load i32* %bound_ptr1906
+  call void @oat_array_bounds_check( i32 %bound1907, i32 1 )
+  %elt1905 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1904, i32 0, i32 1, i32 1
+  %lhs_or_call1908 = load i32* %elt1905
+  %vdecl_slot1909 = alloca i32
+  store i32 %lhs_or_call1908, i32* %vdecl_slot1909
+  %path1910 = getelementptr %State* %_this1, i32 0, i32 4
+  %lhs_or_call1911 = load { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }** %path1910
+  %lhs_or_call1912 = load i32* %vdecl_slot1895
+  %bound_ptr1914 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1911, i32 0, i32 0
+  %bound1915 = load i32* %bound_ptr1914
+  call void @oat_array_bounds_check( i32 %bound1915, i32 %lhs_or_call1912 )
+  %elt1913 = getelementptr { i32, [ 0 x { i32, [ 0 x i32 ] }* ] }* %lhs_or_call1911, i32 0, i32 1, i32 %lhs_or_call1912
+  %lhs_or_call1916 = load { i32, [ 0 x i32 ] }** %elt1913
+  %lhs_or_call1917 = load i32* %vdecl_slot1909
+  %bound_ptr1919 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1916, i32 0, i32 0
+  %bound1920 = load i32* %bound_ptr1919
+  call void @oat_array_bounds_check( i32 %bound1920, i32 %lhs_or_call1917 )
+  %elt1918 = getelementptr { i32, [ 0 x i32 ] }* %lhs_or_call1916, i32 0, i32 1, i32 %lhs_or_call1917
+  %lhs_or_call1921 = load i32* %vdecl_slot1555
+  store i32 %lhs_or_call1921, i32* %elt1918
+  %lhs_or_call1922 = load i32* %vdecl_slot1879
+  %bop1923 = add i32 %lhs_or_call1922, 1
+  store i32 %bop1923, i32* %vdecl_slot1879
+  br label %__cond230
+
+__fresh276:
+  br label %__post228
+
+__post228:
+  br label %__merge231
+
+__merge231:
+  %lhs_or_call1924 = load { i32, [ 0 x i1 ] }** %vdecl_slot1526
+  ret { i32, [ 0 x i1 ] }* %lhs_or_call1924
 }
 
 

@@ -285,10 +285,13 @@ class State <: Object {
     return;
   }
 
-  /* First value asks if you lost second if you cleared a row */
+  /* First value asks if you lost last 4 if you cleared a row */
   bool[] update(int k) {
     bool collided = false;
-    bool[] returnVal = {false,false};
+    /*because you can clear up to four at once*/
+    bool[] returnVal = {false,false,false,false,false};
+    int clearTracker = 1;
+    
     int[][] original_points = {{0,0},{0,0},{0,0},{0,0}};
     int color = this.shape.color;
     for(int i = 0; i < 4; i = i + 1;)
@@ -333,7 +336,11 @@ class State <: Object {
 	  complete = false;
       }
       if(complete){
-	      returnVal[1] = true;
+	if(clearTracker<=4){
+	   returnVal[clearTracker] = true;
+	   clearTracker = clearTracker + 1;
+	}
+	     
 	for(int m = j; m > 0; m = m -1;){
 	  for(int l = 0; l<10;l=l+1;){
 	    this.grid[l][m] = this.grid[l][m-1];
