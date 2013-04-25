@@ -1,11 +1,7 @@
 	.align 4
 	.data
-__const_str12:
-	.ascii "HERE\n\0"
-__const_str11:
-	.ascii "Minimum size of the console is 80x25!\n\0"
 __const_str10:
-	.ascii "HERE\n\0"
+	.ascii "Minimum size of the console is 80x25!\n\0"
 __const_str9:
 	.ascii "Score: \0"
 __const_str8:
@@ -45,7 +41,7 @@ _oat_init:
 	pushl %ebp
 	movl %esp, %ebp
 	subl $0, %esp
-__fresh311:
+__fresh316:
 	movl %ebp, %esp
 	popl %ebp
 	ret
@@ -53,33 +49,33 @@ __fresh311:
 _program:
 	pushl %ebp
 	movl %esp, %ebp
-	subl $284, %esp
-__fresh304:
-	leal -268(%ebp), %eax
+	subl $312, %esp
+__fresh307:
+	leal -292(%ebp), %eax
 	movl %eax, -68(%ebp)
 	movl 8(%ebp), %eax
 	movl %eax, %ecx
 	movl -68(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -264(%ebp), %eax
+	leal -288(%ebp), %eax
 	movl %eax, -64(%ebp)
 	movl 12(%ebp), %eax
 	movl %eax, %ecx
 	movl -64(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -260(%ebp), %eax
+	leal -284(%ebp), %eax
 	movl %eax, -60(%ebp)
 	movl $80, %eax
 	movl %eax, %ecx
 	movl -60(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -256(%ebp), %eax
+	leal -280(%ebp), %eax
 	movl %eax, -56(%ebp)
 	movl $25, %eax
 	movl %eax, %ecx
 	movl -56(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -252(%ebp), %eax
+	leal -276(%ebp), %eax
 	movl %eax, -52(%ebp)
 	movl $0, %eax
 	movl %eax, %ecx
@@ -108,16 +104,12 @@ __fresh304:
 	movl %eax, %ecx
 	movl -36(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -248(%ebp), %eax
+	leal -272(%ebp), %eax
 	movl %eax, -32(%ebp)
 	movl -44(%ebp), %eax
 	movl %eax, %ecx
 	movl -32(%ebp), %eax
 	movl %ecx, (%eax)
-	movl $__const_str10, %eax
-	pushl %eax
-	call _print_string
-	addl $4, %esp
 	call _con_init
 	addl $0, %esp
 	call _instructions
@@ -153,11 +145,11 @@ __fresh304:
 	andl %ecx, -4(%ebp)
 	movl -4(%ebp), %eax
 	cmpl $0, %eax
-	jNE __then303
-	jmp __else302
-__fresh305:
-	jmp __then303
-__then303:
+	jNE __then306
+	jmp __else305
+__fresh308:
+	jmp __then306
+__then306:
 	movl $20, %eax
 	pushl %eax
 	call _oat_malloc
@@ -170,25 +162,25 @@ __then303:
 	call __State_ctor
 	movl %eax, -112(%ebp)
 	addl $4, %esp
-	leal -284(%ebp), %eax
+	leal -308(%ebp), %eax
 	movl %eax, -108(%ebp)
 	movl -112(%ebp), %eax
 	movl %eax, %ecx
 	movl -108(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -280(%ebp), %eax
+	leal -304(%ebp), %eax
 	movl %eax, -104(%ebp)
 	movl $0, %eax
 	movl %eax, %ecx
 	movl -104(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -276(%ebp), %eax
+	leal -300(%ebp), %eax
 	movl %eax, -100(%ebp)
 	movl $0, %eax
 	movl %eax, %ecx
 	movl -100(%ebp), %eax
 	movl %ecx, (%eax)
-	leal -272(%ebp), %eax
+	leal -296(%ebp), %eax
 	movl %eax, -96(%ebp)
 	movl $0, %eax
 	movl %eax, %ecx
@@ -252,166 +244,208 @@ __cond297:
 	cmpl $0, %eax
 	jNE __body296
 	jmp __post295
-__fresh306:
+__fresh309:
 	jmp __body296
 __body296:
 	movl -108(%ebp), %eax
 	movl (%eax), %ecx
-	movl %ecx, -236(%ebp)
-	movl -236(%ebp), %eax
-	addl $0, %eax
-	movl %eax, -232(%ebp)
-	movl -232(%ebp), %eax
-	movl (%eax), %ecx
-	movl %ecx, -228(%ebp)
-	movl -228(%ebp), %eax
-	addl $20, %eax
-	movl %eax, -224(%ebp)
-	movl -224(%ebp), %eax
-	movl (%eax), %ecx
 	movl %ecx, -220(%ebp)
+	movl -220(%ebp), %eax
+	addl $0, %eax
+	movl %eax, -216(%ebp)
+	movl -216(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -212(%ebp)
+	movl -212(%ebp), %eax
+	addl $20, %eax
+	movl %eax, -208(%ebp)
+	movl -208(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -204(%ebp)
 	movl -52(%ebp), %eax
 	movl (%eax), %ecx
-	movl %ecx, -216(%ebp)
-	movl -216(%ebp), %eax
-	pushl %eax
-	movl -236(%ebp), %eax
+	movl %ecx, -200(%ebp)
+	movl -200(%ebp), %eax
 	pushl %eax
 	movl -220(%ebp), %eax
+	pushl %eax
+	movl -204(%ebp), %eax
 	call *%eax
 	addl $8, %esp
 	call _con_getch
-	movl %eax, -212(%ebp)
+	movl %eax, -196(%ebp)
 	addl $0, %esp
-	movl -212(%ebp), %eax
+	movl -196(%ebp), %eax
 	movl %eax, %ecx
 	movl -100(%ebp), %eax
 	movl %ecx, (%eax)
 	movl -108(%ebp), %eax
 	movl (%eax), %ecx
-	movl %ecx, -208(%ebp)
-	movl -208(%ebp), %eax
-	addl $0, %eax
-	movl %eax, -204(%ebp)
-	movl -204(%ebp), %eax
-	movl (%eax), %ecx
-	movl %ecx, -200(%ebp)
-	movl -200(%ebp), %eax
-	addl $16, %eax
-	movl %eax, -196(%ebp)
-	movl -196(%ebp), %eax
-	movl (%eax), %ecx
 	movl %ecx, -192(%ebp)
+	movl -192(%ebp), %eax
+	addl $0, %eax
+	movl %eax, -188(%ebp)
+	movl -188(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -184(%ebp)
+	movl -184(%ebp), %eax
+	addl $16, %eax
+	movl %eax, -180(%ebp)
+	movl -180(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -176(%ebp)
 	movl -100(%ebp), %eax
 	movl (%eax), %ecx
-	movl %ecx, -188(%ebp)
-	movl -188(%ebp), %eax
-	pushl %eax
-	movl -208(%ebp), %eax
+	movl %ecx, -172(%ebp)
+	movl -172(%ebp), %eax
 	pushl %eax
 	movl -192(%ebp), %eax
+	pushl %eax
+	movl -176(%ebp), %eax
 	call *%eax
-	movl %eax, -184(%ebp)
+	movl %eax, -168(%ebp)
 	addl $8, %esp
-	movl -184(%ebp), %eax
+	movl -168(%ebp), %eax
 	movl %eax, %ecx
 	movl -32(%ebp), %eax
 	movl %ecx, (%eax)
 	movl -32(%ebp), %eax
-	movl (%eax), %ecx
-	movl %ecx, -180(%ebp)
-	movl -180(%ebp), %eax
-	addl $0, %eax
-	movl %eax, -176(%ebp)
-	movl -176(%ebp), %eax
-	movl (%eax), %ecx
-	movl %ecx, -172(%ebp)
-	movl $0, %eax
-	pushl %eax
-	movl -172(%ebp), %eax
-	pushl %eax
-	call _oat_array_bounds_check
-	addl $8, %esp
-	movl -180(%ebp), %eax
-	addl $4, %eax
-	addl $0, %eax
-	movl %eax, -168(%ebp)
-	movl -168(%ebp), %eax
 	movl (%eax), %ecx
 	movl %ecx, -164(%ebp)
 	movl -164(%ebp), %eax
-	movl %eax, %ecx
-	movl -104(%ebp), %eax
-	movl %ecx, (%eax)
-	movl -32(%ebp), %eax
-	movl (%eax), %ecx
-	movl %ecx, -160(%ebp)
-	movl -160(%ebp), %eax
 	addl $0, %eax
-	movl %eax, -156(%ebp)
-	movl -156(%ebp), %eax
+	movl %eax, -160(%ebp)
+	movl -160(%ebp), %eax
 	movl (%eax), %ecx
-	movl %ecx, -152(%ebp)
-	movl $1, %eax
+	movl %ecx, -156(%ebp)
+	movl $0, %eax
 	pushl %eax
-	movl -152(%ebp), %eax
+	movl -156(%ebp), %eax
 	pushl %eax
 	call _oat_array_bounds_check
 	addl $8, %esp
-	movl -160(%ebp), %eax
+	movl -164(%ebp), %eax
 	addl $4, %eax
-	addl $4, %eax
-	movl %eax, -148(%ebp)
+	addl $0, %eax
+	movl %eax, -152(%ebp)
+	movl -152(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -148(%ebp)
 	movl -148(%ebp), %eax
-	movl (%eax), %ecx
-	movl %ecx, -144(%ebp)
-	movl -144(%ebp), %eax
-	cmpl $0, %eax
-	jNE __then300
-	jmp __else299
-__fresh307:
-	jmp __then300
-__then300:
-	movl -52(%ebp), %eax
-	movl (%eax), %ecx
-	movl %ecx, -244(%ebp)
-	movl -244(%ebp), %eax
-	movl %eax, -240(%ebp)
+	movl %eax, %ecx
+	movl -104(%ebp), %eax
+	movl %ecx, (%eax)
+	leal -312(%ebp), %eax
+	movl %eax, -144(%ebp)
 	movl $1, %eax
 	movl %eax, %ecx
-	addl %ecx, -240(%ebp)
+	movl -144(%ebp), %eax
+	movl %ecx, (%eax)
+	jmp __cond300
+__cond300:
+	movl -144(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -228(%ebp)
+	movl -228(%ebp), %eax
+	movl %eax, %ecx
+	movl $5, %eax
+	cmpl %eax, %ecx
+	setL -224(%ebp)
+	andl $1, -224(%ebp)
+	movl -224(%ebp), %eax
+	cmpl $0, %eax
+	jNE __body299
+	jmp __post298
+__fresh310:
+	jmp __body299
+__body299:
+	movl -32(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -252(%ebp)
+	movl -144(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -248(%ebp)
+	movl -252(%ebp), %eax
+	addl $0, %eax
+	movl %eax, -244(%ebp)
+	movl -244(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -240(%ebp)
+	movl -248(%ebp), %eax
+	pushl %eax
 	movl -240(%ebp), %eax
+	pushl %eax
+	call _oat_array_bounds_check
+	addl $8, %esp
+	movl -252(%ebp), %eax
+	addl $4, %eax
+	movl %eax, %ecx
+	movl -248(%ebp), %eax
+	imull $4, %eax
+	addl %ecx, %eax
+	movl %eax, -236(%ebp)
+	movl -236(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -232(%ebp)
+	movl -232(%ebp), %eax
+	cmpl $0, %eax
+	jNE __then303
+	jmp __else302
+__fresh311:
+	jmp __then303
+__then303:
+	movl -52(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -260(%ebp)
+	movl -260(%ebp), %eax
+	movl %eax, -256(%ebp)
+	movl $1, %eax
+	movl %eax, %ecx
+	addl %ecx, -256(%ebp)
+	movl -256(%ebp), %eax
 	movl %eax, %ecx
 	movl -52(%ebp), %eax
 	movl %ecx, (%eax)
-	jmp __merge298
-__fresh308:
-	jmp __else299
-__else299:
-	jmp __merge298
-__merge298:
+	jmp __merge301
+__fresh312:
+	jmp __else302
+__else302:
+	jmp __merge301
+__merge301:
+	movl -144(%ebp), %eax
+	movl (%eax), %ecx
+	movl %ecx, -268(%ebp)
+	movl -268(%ebp), %eax
+	movl %eax, -264(%ebp)
+	movl $1, %eax
+	movl %eax, %ecx
+	addl %ecx, -264(%ebp)
+	movl -264(%ebp), %eax
+	movl %eax, %ecx
+	movl -144(%ebp), %eax
+	movl %ecx, (%eax)
+	jmp __cond300
+__fresh313:
+	jmp __post298
+__post298:
 	jmp __cond297
-__fresh309:
+__fresh314:
 	jmp __post295
 __post295:
 	call _con_cleanup
 	addl $0, %esp
-	jmp __merge301
-__fresh310:
-	jmp __else302
-__else302:
+	jmp __merge304
+__fresh315:
+	jmp __else305
+__else305:
 	call _con_cleanup
 	addl $0, %esp
-	movl $__const_str11, %eax
+	movl $__const_str10, %eax
 	pushl %eax
 	call _print_string
 	addl $4, %esp
-	jmp __merge301
-__merge301:
-	movl $__const_str12, %eax
-	pushl %eax
-	call _print_string
-	addl $4, %esp
+	jmp __merge304
+__merge304:
 	movl $0, %eax
 	movl %ebp, %esp
 	popl %ebp
@@ -8072,7 +8106,7 @@ __then22:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -448(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -448(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8162,7 +8196,7 @@ __then22:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -376(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -376(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8252,7 +8286,7 @@ __then22:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -304(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -304(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8342,7 +8376,7 @@ __then22:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -232(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -232(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8413,7 +8447,7 @@ __then22:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -176(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -176(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8504,7 +8538,7 @@ __then19:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -784(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -784(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8594,7 +8628,7 @@ __then19:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -712(%ebp)
-	movl $1, %eax
+	movl $6, %eax
 	movl %eax, %ecx
 	movl -712(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8684,7 +8718,7 @@ __then19:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -640(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -640(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8774,7 +8808,7 @@ __then19:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -568(%ebp)
-	movl $1, %eax
+	movl $6, %eax
 	movl %eax, %ecx
 	movl -568(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8845,7 +8879,7 @@ __then19:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -512(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -512(%ebp), %eax
 	movl %ecx, (%eax)
@@ -8936,7 +8970,7 @@ __then16:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1120(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1120(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9026,7 +9060,7 @@ __then16:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1048(%ebp)
-	movl $0, %eax
+	movl $4, %eax
 	movl %eax, %ecx
 	movl -1048(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9116,7 +9150,7 @@ __then16:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -976(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -976(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9206,7 +9240,7 @@ __then16:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -904(%ebp)
-	movl $2, %eax
+	movl $6, %eax
 	movl %eax, %ecx
 	movl -904(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9277,7 +9311,7 @@ __then16:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -848(%ebp)
-	movl $0, %eax
+	movl $4, %eax
 	movl %eax, %ecx
 	movl -848(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9368,7 +9402,7 @@ __then13:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1456(%ebp)
-	movl $0, %eax
+	movl $4, %eax
 	movl %eax, %ecx
 	movl -1456(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9458,7 +9492,7 @@ __then13:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1384(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1384(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9548,7 +9582,7 @@ __then13:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1312(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1312(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9638,7 +9672,7 @@ __then13:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1240(%ebp)
-	movl $2, %eax
+	movl $6, %eax
 	movl %eax, %ecx
 	movl -1240(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9709,7 +9743,7 @@ __then13:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1184(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1184(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9800,7 +9834,7 @@ __then10:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1792(%ebp)
-	movl $1, %eax
+	movl $6, %eax
 	movl %eax, %ecx
 	movl -1792(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9890,7 +9924,7 @@ __then10:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1720(%ebp)
-	movl $2, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1720(%ebp), %eax
 	movl %ecx, (%eax)
@@ -9980,7 +10014,7 @@ __then10:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1648(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1648(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10070,7 +10104,7 @@ __then10:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1576(%ebp)
-	movl $1, %eax
+	movl $4, %eax
 	movl %eax, %ecx
 	movl -1576(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10141,7 +10175,7 @@ __then10:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1520(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1520(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10232,7 +10266,7 @@ __then7:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -2128(%ebp)
-	movl $0, %eax
+	movl $4, %eax
 	movl %eax, %ecx
 	movl -2128(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10322,7 +10356,7 @@ __then7:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -2056(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -2056(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10412,7 +10446,7 @@ __then7:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1984(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1984(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10502,7 +10536,7 @@ __then7:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1912(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1912(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10573,7 +10607,7 @@ __then7:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -1856(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -1856(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10664,7 +10698,7 @@ __then4:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -2464(%ebp)
-	movl $0, %eax
+	movl $6, %eax
 	movl %eax, %ecx
 	movl -2464(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10754,7 +10788,7 @@ __then4:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -2392(%ebp)
-	movl $1, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -2392(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10844,7 +10878,7 @@ __then4:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -2320(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -2320(%ebp), %eax
 	movl %ecx, (%eax)
@@ -10934,7 +10968,7 @@ __then4:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -2248(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -2248(%ebp), %eax
 	movl %ecx, (%eax)
@@ -11005,7 +11039,7 @@ __then4:
 	addl $4, %eax
 	addl $0, %eax
 	movl %eax, -2192(%ebp)
-	movl $0, %eax
+	movl $5, %eax
 	movl %eax, %ecx
 	movl -2192(%ebp), %eax
 	movl %ecx, (%eax)
